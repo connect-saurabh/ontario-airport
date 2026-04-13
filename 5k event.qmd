@@ -1,0 +1,189 @@
+---
+title: "5k Event ROI Analysis"
+format: html
+---
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(scales)
+```
+
+```{r}
+cost_data <- data.frame(
+  category = c(
+    "Signage",
+    "Community Event Supplies/Vendors",
+    "Volunteer Supplies",
+    "Race Equipment/Supplies",
+    "Timing Company/Race Management",
+    "Event Equipment"
+  ),
+  total_cost = c(6054, 15211, 3646, 31883, 28478, 29686),
+  cost_type = c(
+    "Mixed",
+    "Unrecoverable",
+    "Unrecoverable",
+    "Recoverable",
+    "Recoverable",
+    "Unrecoverable"
+  )
+)
+
+```
+
+
+```{r}
+revenue_data <- data.frame(
+  source = c("Race Roster", "Sponsorships"),
+  revenue = c(83802, 61000)
+)
+
+```
+
+```{r}
+total_cost <- sum(cost_data$total_cost)
+total_revenue <- sum(revenue_data$revenue)
+net_profit <- total_revenue - total_cost
+roi <- (net_profit / total_cost) * 100
+
+recoverable_cost <- 62000
+unrecoverable_cost <- 52958
+
+summary_table <- data.frame(
+  metric = c(
+    "Total Cost",
+    "Recoverable Cost",
+    "Unrecoverable Cost",
+    "Total Revenue",
+    "Net Profit",
+    "ROI Percent"
+  ),
+  value = c(
+    total_cost,
+    recoverable_cost,
+    unrecoverable_cost,
+    total_revenue,
+    net_profit,
+    roi
+  )
+)
+
+print(summary_table)
+```
+
+```{r}
+cost_data <- cost_data %>%
+  mutate(share_of_total = total_cost / sum(total_cost))
+
+print(cost_data)
+
+```
+
+
+```{r}
+revenue_data <- revenue_data %>%
+  mutate(share_of_total = revenue / sum(revenue))
+
+print(revenue_data)
+```
+
+```{r}
+ggplot(cost_data, aes(x = reorder(category, total_cost), y = total_cost)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_continuous(labels = dollar_format()) +
+  labs(
+    title = "5K 2026 Cost by Category",
+    x = "Category",
+    y = "Cost"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+ggplot(revenue_data, aes(x = reorder(source, revenue), y = revenue)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_continuous(labels = dollar_format()) +
+  labs(
+    title = "5K 2026 Revenue by Source",
+    x = "Revenue Source",
+    y = "Revenue"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+cat("Total Cost: $", comma(total_cost), "\n", sep = "")
+cat("Total Revenue: $", comma(total_revenue), "\n", sep = "")
+cat("Net Profit: $", comma(net_profit), "\n", sep = "")
+cat("ROI: ", round(roi, 2), "%\n", sep = "")
+```
+
+
+
+```{r}
+scenarios <- data.frame(
+  scenario = c("Low", "Baseline", "High"),
+  revenue_multiplier = c(0.90, 1.00, 1.20)
+)
+
+scenario_results <- scenarios %>%
+  mutate(
+    projected_revenue = total_revenue * revenue_multiplier,
+    projected_profit = projected_revenue - total_cost,
+    projected_roi = (projected_profit / total_cost) * 100
+  )
+
+print(scenario_results)
+```
+
+
+```{r}
+ggplot(scenario_results, aes(x = scenario, y = projected_roi)) +
+  geom_col() +
+  labs(
+    title = "5K 2026 ROI Scenario Analysis",
+    x = "Scenario",
+    y = "ROI (%)"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+break_even_revenue <- total_cost
+additional_revenue_needed <- max(0, break_even_revenue - total_revenue)
+
+break_even_table <- data.frame(
+  metric = c("Break-even Revenue Needed", "Additional Revenue Needed"),
+  value = c(break_even_revenue, additional_revenue_needed)
+)
+
+print(break_even_table)
+```
+
+
+```{r}
+value_per_passenger <- 20
+
+estimated_passengers_to_cover_total_cost <- total_cost / value_per_passenger
+estimated_passengers_to_generate_net_profit <- net_profit / value_per_passenger
+
+proxy_table <- data.frame(
+  metric = c(
+    "Passengers Needed to Cover Total Cost",
+    "Passenger Equivalent of Net Profit"
+  ),
+  value = c(
+    estimated_passengers_to_cover_total_cost,
+    estimated_passengers_to_generate_net_profit
+  )
+)
+
+print(proxy_table)
+```
+
