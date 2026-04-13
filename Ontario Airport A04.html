@@ -89,62 +89,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#community-engagement-tracker-data-analysis" id="toc-community-engagement-tracker-data-analysis" class="nav-link active" data-scroll-target="#community-engagement-tracker-data-analysis"><span class="header-section-number">1</span> Community Engagement Tracker Data Analysis</a>
+  <li><a href="#install-load-packages" id="toc-install-load-packages" class="nav-link active" data-scroll-target="#install-load-packages"><span class="header-section-number">0.1</span> Install / load packages</a></li>
+  <li><a href="#read-the-cleaned-data" id="toc-read-the-cleaned-data" class="nav-link" data-scroll-target="#read-the-cleaned-data"><span class="header-section-number">0.2</span> Read the cleaned data</a></li>
+  <li><a href="#inspect-the-data" id="toc-inspect-the-data" class="nav-link" data-scroll-target="#inspect-the-data"><span class="header-section-number">0.3</span> Inspect the data</a></li>
+  <li><a href="#basic-cleaning" id="toc-basic-cleaning" class="nav-link" data-scroll-target="#basic-cleaning"><span class="header-section-number">0.4</span> Basic cleaning</a></li>
+  <li><a href="#total-passengers-by-month" id="toc-total-passengers-by-month" class="nav-link" data-scroll-target="#total-passengers-by-month"><span class="header-section-number">0.5</span> Total passengers by month</a></li>
+  <li><a href="#total-passengers-by-airline" id="toc-total-passengers-by-airline" class="nav-link" data-scroll-target="#total-passengers-by-airline"><span class="header-section-number">0.6</span> Total passengers by airline</a></li>
+  <li><a href="#top-10-airlines" id="toc-top-10-airlines" class="nav-link" data-scroll-target="#top-10-airlines"><span class="header-section-number">0.7</span> Top 10 airlines</a></li>
+  <li><a href="#yearly-passenger-trend" id="toc-yearly-passenger-trend" class="nav-link" data-scroll-target="#yearly-passenger-trend"><span class="header-section-number">0.8</span> Yearly passenger trend</a></li>
+  <li><a href="#year-over-year-monthly-change" id="toc-year-over-year-monthly-change" class="nav-link" data-scroll-target="#year-over-year-monthly-change"><span class="header-section-number">0.9</span> Year-over-year monthly change</a></li>
+  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations"><span class="header-section-number">0.10</span> Visualizations</a>
   <ul class="collapse">
-  <li><a href="#install-load-packages" id="toc-install-load-packages" class="nav-link" data-scroll-target="#install-load-packages"><span class="header-section-number">1.1</span> Install / load packages</a></li>
-  <li><a href="#read-the-cleaned-data" id="toc-read-the-cleaned-data" class="nav-link" data-scroll-target="#read-the-cleaned-data"><span class="header-section-number">1.2</span> Read the cleaned data</a></li>
-  <li><a href="#inspect-the-data" id="toc-inspect-the-data" class="nav-link" data-scroll-target="#inspect-the-data"><span class="header-section-number">1.3</span> Inspect the data</a></li>
-  <li><a href="#basic-cleaning" id="toc-basic-cleaning" class="nav-link" data-scroll-target="#basic-cleaning"><span class="header-section-number">1.4</span> Basic cleaning</a></li>
-  <li><a href="#total-passengers-by-month" id="toc-total-passengers-by-month" class="nav-link" data-scroll-target="#total-passengers-by-month"><span class="header-section-number">1.5</span> Total passengers by month</a></li>
-  <li><a href="#total-passengers-by-airline" id="toc-total-passengers-by-airline" class="nav-link" data-scroll-target="#total-passengers-by-airline"><span class="header-section-number">1.6</span> Total passengers by airline</a></li>
-  <li><a href="#top-10-airlines" id="toc-top-10-airlines" class="nav-link" data-scroll-target="#top-10-airlines"><span class="header-section-number">1.7</span> Top 10 airlines</a></li>
-  <li><a href="#yearly-passenger-trend" id="toc-yearly-passenger-trend" class="nav-link" data-scroll-target="#yearly-passenger-trend"><span class="header-section-number">1.8</span> Yearly passenger trend</a></li>
-  <li><a href="#year-over-year-monthly-change" id="toc-year-over-year-monthly-change" class="nav-link" data-scroll-target="#year-over-year-monthly-change"><span class="header-section-number">1.9</span> Year-over-year monthly change</a></li>
-  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations"><span class="header-section-number">1.10</span> Visualizations</a>
-  <ul class="collapse">
-  <li><a href="#total-passengers-over-time" id="toc-total-passengers-over-time" class="nav-link" data-scroll-target="#total-passengers-over-time"><span class="header-section-number">1.10.1</span> Total passengers over time</a></li>
-  <li><a href="#top-airlines" id="toc-top-airlines" class="nav-link" data-scroll-target="#top-airlines"><span class="header-section-number">1.10.2</span> Top airlines</a></li>
-  <li><a href="#airline-trend-over-time-for-top-5-airlines" id="toc-airline-trend-over-time-for-top-5-airlines" class="nav-link" data-scroll-target="#airline-trend-over-time-for-top-5-airlines"><span class="header-section-number">1.10.3</span> Airline trend over time for top 5 airlines</a></li>
+  <li><a href="#total-passengers-over-time" id="toc-total-passengers-over-time" class="nav-link" data-scroll-target="#total-passengers-over-time"><span class="header-section-number">0.10.1</span> Total passengers over time</a></li>
+  <li><a href="#top-airlines" id="toc-top-airlines" class="nav-link" data-scroll-target="#top-airlines"><span class="header-section-number">0.10.2</span> Top airlines</a></li>
+  <li><a href="#airline-trend-over-time-for-top-5-airlines" id="toc-airline-trend-over-time-for-top-5-airlines" class="nav-link" data-scroll-target="#airline-trend-over-time-for-top-5-airlines"><span class="header-section-number">0.10.3</span> Airline trend over time for top 5 airlines</a></li>
   </ul></li>
-  <li><a href="#use-airport-metric-table" id="toc-use-airport-metric-table" class="nav-link" data-scroll-target="#use-airport-metric-table"><span class="header-section-number">1.11</span> Use airport metric table</a>
+  <li><a href="#use-airport-metric-table" id="toc-use-airport-metric-table" class="nav-link" data-scroll-target="#use-airport-metric-table"><span class="header-section-number">0.11</span> Use airport metric table</a>
   <ul class="collapse">
-  <li><a href="#example-total-passengers-metric-from-metrics-file" id="toc-example-total-passengers-metric-from-metrics-file" class="nav-link" data-scroll-target="#example-total-passengers-metric-from-metrics-file"><span class="header-section-number">1.11.1</span> Example: Total Passengers metric from metrics file</a></li>
+  <li><a href="#example-total-passengers-metric-from-metrics-file" id="toc-example-total-passengers-metric-from-metrics-file" class="nav-link" data-scroll-target="#example-total-passengers-metric-from-metrics-file"><span class="header-section-number">0.11.1</span> Example: Total Passengers metric from metrics file</a></li>
   </ul></li>
-  <li><a href="#create-a-baseline-model" id="toc-create-a-baseline-model" class="nav-link" data-scroll-target="#create-a-baseline-model"><span class="header-section-number">1.12</span> Create a baseline model</a>
+  <li><a href="#create-a-baseline-model" id="toc-create-a-baseline-model" class="nav-link" data-scroll-target="#create-a-baseline-model"><span class="header-section-number">0.12</span> Create a baseline model</a>
   <ul class="collapse">
-  <li><a href="#simple-time-trend-model-using-monthly-totals" id="toc-simple-time-trend-model-using-monthly-totals" class="nav-link" data-scroll-target="#simple-time-trend-model-using-monthly-totals"><span class="header-section-number">1.12.1</span> Simple time trend model using monthly totals</a></li>
+  <li><a href="#simple-time-trend-model-using-monthly-totals" id="toc-simple-time-trend-model-using-monthly-totals" class="nav-link" data-scroll-target="#simple-time-trend-model-using-monthly-totals"><span class="header-section-number">0.12.1</span> Simple time trend model using monthly totals</a></li>
   </ul></li>
-  <li><a href="#ao4-simulation-framework" id="toc-ao4-simulation-framework" class="nav-link" data-scroll-target="#ao4-simulation-framework"><span class="header-section-number">1.13</span> AO4 Simulation Framework</a></li>
-  <li><a href="#example-simulation-formula" id="toc-example-simulation-formula" class="nav-link" data-scroll-target="#example-simulation-formula"><span class="header-section-number">1.14</span> Example simulation formula:</a></li>
-  <li><a href="#scenario-testing" id="toc-scenario-testing" class="nav-link" data-scroll-target="#scenario-testing"><span class="header-section-number">1.15</span> Scenario testing</a></li>
-  <li><a href="#simple-roi-proxy-framework" id="toc-simple-roi-proxy-framework" class="nav-link" data-scroll-target="#simple-roi-proxy-framework"><span class="header-section-number">1.16</span> Simple ROI proxy framework</a></li>
-  <li><a href="#passenger-trend-over-time" id="toc-passenger-trend-over-time" class="nav-link" data-scroll-target="#passenger-trend-over-time"><span class="header-section-number">1.17</span> Passenger trend over time</a></li>
-  <li><a href="#engagement-events-over-time" id="toc-engagement-events-over-time" class="nav-link" data-scroll-target="#engagement-events-over-time"><span class="header-section-number">1.18</span> Engagement (events) over time</a></li>
-  <li><a href="#most-important-graph-ao4" id="toc-most-important-graph-ao4" class="nav-link" data-scroll-target="#most-important-graph-ao4"><span class="header-section-number">1.19</span> MOST IMPORTANT GRAPH (AO4)</a></li>
-  <li><a href="#combined-dual-axis-style-visual-storytelling" id="toc-combined-dual-axis-style-visual-storytelling" class="nav-link" data-scroll-target="#combined-dual-axis-style-visual-storytelling"><span class="header-section-number">1.20</span> Combined dual-axis style (visual storytelling)</a></li>
-  <li><a href="#model-prediction-visualization" id="toc-model-prediction-visualization" class="nav-link" data-scroll-target="#model-prediction-visualization"><span class="header-section-number">1.21</span> Model prediction visualization</a></li>
-  <li><a href="#simulation-graph-ao4-highlight" id="toc-simulation-graph-ao4-highlight" class="nav-link" data-scroll-target="#simulation-graph-ao4-highlight"><span class="header-section-number">1.22</span> Simulation graph (AO4 highlight)</a></li>
-  </ul></li>
-  <li><a href="#ao4---ce-cities-engagement-analysis" id="toc-ao4---ce-cities-engagement-analysis" class="nav-link" data-scroll-target="#ao4---ce-cities-engagement-analysis"><span class="header-section-number">2</span> AO4 - CE Cities Engagement Analysis</a>
+  <li><a href="#ao4-simulation-framework" id="toc-ao4-simulation-framework" class="nav-link" data-scroll-target="#ao4-simulation-framework"><span class="header-section-number">0.13</span> AO4 Simulation Framework</a></li>
+  <li><a href="#example-simulation-formula" id="toc-example-simulation-formula" class="nav-link" data-scroll-target="#example-simulation-formula"><span class="header-section-number">0.14</span> Example simulation formula:</a></li>
+  <li><a href="#scenario-testing" id="toc-scenario-testing" class="nav-link" data-scroll-target="#scenario-testing"><span class="header-section-number">0.15</span> Scenario testing</a></li>
+  <li><a href="#simple-roi-proxy-framework" id="toc-simple-roi-proxy-framework" class="nav-link" data-scroll-target="#simple-roi-proxy-framework"><span class="header-section-number">0.16</span> Simple ROI proxy framework</a></li>
+  <li><a href="#passenger-trend-over-time" id="toc-passenger-trend-over-time" class="nav-link" data-scroll-target="#passenger-trend-over-time"><span class="header-section-number">0.17</span> Passenger trend over time</a></li>
+  <li><a href="#engagement-events-over-time" id="toc-engagement-events-over-time" class="nav-link" data-scroll-target="#engagement-events-over-time"><span class="header-section-number">0.18</span> Engagement (events) over time</a></li>
+  <li><a href="#most-important-graph-ao4" id="toc-most-important-graph-ao4" class="nav-link" data-scroll-target="#most-important-graph-ao4"><span class="header-section-number">0.19</span> MOST IMPORTANT GRAPH (AO4)</a></li>
+  <li><a href="#combined-dual-axis-style-visual-storytelling" id="toc-combined-dual-axis-style-visual-storytelling" class="nav-link" data-scroll-target="#combined-dual-axis-style-visual-storytelling"><span class="header-section-number">0.20</span> Combined dual-axis style (visual storytelling)</a></li>
+  <li><a href="#model-prediction-visualization" id="toc-model-prediction-visualization" class="nav-link" data-scroll-target="#model-prediction-visualization"><span class="header-section-number">0.21</span> Model prediction visualization</a></li>
+  <li><a href="#simulation-graph-ao4-highlight" id="toc-simulation-graph-ao4-highlight" class="nav-link" data-scroll-target="#simulation-graph-ao4-highlight"><span class="header-section-number">0.22</span> Simulation graph (AO4 highlight)</a></li>
+  <li><a href="#ao4---ce-cities-engagement-analysis" id="toc-ao4---ce-cities-engagement-analysis" class="nav-link" data-scroll-target="#ao4---ce-cities-engagement-analysis"><span class="header-section-number">1</span> AO4 - CE Cities Engagement Analysis</a>
   <ul class="collapse">
-  <li><a href="#inspect-structure" id="toc-inspect-structure" class="nav-link" data-scroll-target="#inspect-structure"><span class="header-section-number">2.1</span> Inspect structure</a></li>
-  <li><a href="#overall-summary" id="toc-overall-summary" class="nav-link" data-scroll-target="#overall-summary"><span class="header-section-number">2.2</span> Overall summary</a></li>
-  <li><a href="#top-cities-by-total-engagements" id="toc-top-cities-by-total-engagements" class="nav-link" data-scroll-target="#top-cities-by-total-engagements"><span class="header-section-number">2.3</span> Top cities by total engagements</a></li>
-  <li><a href="#county-level-summary" id="toc-county-level-summary" class="nav-link" data-scroll-target="#county-level-summary"><span class="header-section-number">2.4</span> County-level summary</a></li>
-  <li><a href="#lead-level-summary" id="toc-lead-level-summary" class="nav-link" data-scroll-target="#lead-level-summary"><span class="header-section-number">2.5</span> Lead-level summary</a></li>
-  <li><a href="#create-efficiency-metrics" id="toc-create-efficiency-metrics" class="nav-link" data-scroll-target="#create-efficiency-metrics"><span class="header-section-number">2.6</span> Create efficiency metrics</a></li>
-  <li><a href="#create-a-simple-weighted-engagement-score" id="toc-create-a-simple-weighted-engagement-score" class="nav-link" data-scroll-target="#create-a-simple-weighted-engagement-score"><span class="header-section-number">2.7</span> Create a simple weighted engagement score</a></li>
-  <li><a href="#graphs" id="toc-graphs" class="nav-link" data-scroll-target="#graphs"><span class="header-section-number">2.8</span> GRAPHS</a></li>
-  <li><a href="#top-10-cities-by-total-engagements" id="toc-top-10-cities-by-total-engagements" class="nav-link" data-scroll-target="#top-10-cities-by-total-engagements"><span class="header-section-number">2.9</span> Top 10 cities by total engagements</a></li>
-  <li><a href="#county-comparison" id="toc-county-comparison" class="nav-link" data-scroll-target="#county-comparison"><span class="header-section-number">2.10</span> County comparison</a></li>
-  <li><a href="#visits-vs-engagements-relationship" id="toc-visits-vs-engagements-relationship" class="nav-link" data-scroll-target="#visits-vs-engagements-relationship"><span class="header-section-number">2.11</span> Visits vs engagements relationship</a></li>
-  <li><a href="#top-cities-by-engagement-score" id="toc-top-cities-by-engagement-score" class="nav-link" data-scroll-target="#top-cities-by-engagement-score"><span class="header-section-number">2.12</span> Top cities by engagement score</a></li>
-  <li><a href="#lead-comparison" id="toc-lead-comparison" class="nav-link" data-scroll-target="#lead-comparison"><span class="header-section-number">2.13</span> Lead comparison</a></li>
+  <li><a href="#inspect-structure" id="toc-inspect-structure" class="nav-link" data-scroll-target="#inspect-structure"><span class="header-section-number">1.1</span> Inspect structure</a></li>
+  <li><a href="#overall-summary" id="toc-overall-summary" class="nav-link" data-scroll-target="#overall-summary"><span class="header-section-number">1.2</span> Overall summary</a></li>
+  <li><a href="#top-cities-by-total-engagements" id="toc-top-cities-by-total-engagements" class="nav-link" data-scroll-target="#top-cities-by-total-engagements"><span class="header-section-number">1.3</span> Top cities by total engagements</a></li>
+  <li><a href="#county-level-summary" id="toc-county-level-summary" class="nav-link" data-scroll-target="#county-level-summary"><span class="header-section-number">1.4</span> County-level summary</a></li>
+  <li><a href="#lead-level-summary" id="toc-lead-level-summary" class="nav-link" data-scroll-target="#lead-level-summary"><span class="header-section-number">1.5</span> Lead-level summary</a></li>
+  <li><a href="#create-efficiency-metrics" id="toc-create-efficiency-metrics" class="nav-link" data-scroll-target="#create-efficiency-metrics"><span class="header-section-number">1.6</span> Create efficiency metrics</a></li>
+  <li><a href="#create-a-simple-weighted-engagement-score" id="toc-create-a-simple-weighted-engagement-score" class="nav-link" data-scroll-target="#create-a-simple-weighted-engagement-score"><span class="header-section-number">1.7</span> Create a simple weighted engagement score</a></li>
+  <li><a href="#graphs" id="toc-graphs" class="nav-link" data-scroll-target="#graphs"><span class="header-section-number">1.8</span> GRAPHS</a></li>
+  <li><a href="#top-10-cities-by-total-engagements" id="toc-top-10-cities-by-total-engagements" class="nav-link" data-scroll-target="#top-10-cities-by-total-engagements"><span class="header-section-number">1.9</span> Top 10 cities by total engagements</a></li>
+  <li><a href="#county-comparison" id="toc-county-comparison" class="nav-link" data-scroll-target="#county-comparison"><span class="header-section-number">1.10</span> County comparison</a></li>
+  <li><a href="#visits-vs-engagements-relationship" id="toc-visits-vs-engagements-relationship" class="nav-link" data-scroll-target="#visits-vs-engagements-relationship"><span class="header-section-number">1.11</span> Visits vs engagements relationship</a></li>
+  <li><a href="#top-cities-by-engagement-score" id="toc-top-cities-by-engagement-score" class="nav-link" data-scroll-target="#top-cities-by-engagement-score"><span class="header-section-number">1.12</span> Top cities by engagement score</a></li>
+  <li><a href="#lead-comparison" id="toc-lead-comparison" class="nav-link" data-scroll-target="#lead-comparison"><span class="header-section-number">1.13</span> Lead comparison</a></li>
   </ul></li>
-  <li><a href="#monthly-engagement" id="toc-monthly-engagement" class="nav-link" data-scroll-target="#monthly-engagement"><span class="header-section-number">3</span> Monthly Engagement</a>
+  <li><a href="#monthly-engagement" id="toc-monthly-engagement" class="nav-link" data-scroll-target="#monthly-engagement"><span class="header-section-number">2</span> Monthly Engagement</a>
   <ul class="collapse">
-  <li><a href="#total-engagement-across-all-cities" id="toc-total-engagement-across-all-cities" class="nav-link" data-scroll-target="#total-engagement-across-all-cities"><span class="header-section-number">3.1</span> Total engagement across all cities</a></li>
-  <li><a href="#convert-to-monthly-averages-12-months-assumption" id="toc-convert-to-monthly-averages-12-months-assumption" class="nav-link" data-scroll-target="#convert-to-monthly-averages-12-months-assumption"><span class="header-section-number">3.2</span> Convert to monthly averages (12 months assumption)</a></li>
+  <li><a href="#total-engagement-across-all-cities" id="toc-total-engagement-across-all-cities" class="nav-link" data-scroll-target="#total-engagement-across-all-cities"><span class="header-section-number">2.1</span> Total engagement across all cities</a></li>
+  <li><a href="#convert-to-monthly-averages-12-months-assumption" id="toc-convert-to-monthly-averages-12-months-assumption" class="nav-link" data-scroll-target="#convert-to-monthly-averages-12-months-assumption"><span class="header-section-number">2.2</span> Convert to monthly averages (12 months assumption)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -176,10 +173,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="community-engagement-tracker-data-analysis" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Community Engagement Tracker Data Analysis</h1>
-<section id="install-load-packages" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="install-load-packages"><span class="header-section-number">1.1</span> Install / load packages</h2>
+<p>#testing # Community Engagement Tracker Data Analysis</p>
+<section id="install-load-packages" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="install-load-packages"><span class="header-section-number">0.1</span> Install / load packages</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -191,8 +187,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="read-the-cleaned-data" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="read-the-cleaned-data"><span class="header-section-number">1.2</span> Read the cleaned data</h2>
+<section id="read-the-cleaned-data" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="read-the-cleaned-data"><span class="header-section-number">0.2</span> Read the cleaned data</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -201,8 +197,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="inspect-the-data" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="inspect-the-data"><span class="header-section-number">1.3</span> Inspect the data</h2>
+<section id="inspect-the-data" class="level2" data-number="0.3">
+<h2 data-number="0.3" class="anchored" data-anchor-id="inspect-the-data"><span class="header-section-number">0.3</span> Inspect the data</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -254,8 +250,8 @@ $ source_sheet &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021,
 </div>
 </div>
 </section>
-<section id="basic-cleaning" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="basic-cleaning"><span class="header-section-number">1.4</span> Basic cleaning</h2>
+<section id="basic-cleaning" class="level2" data-number="0.4">
+<h2 data-number="0.4" class="anchored" data-anchor-id="basic-cleaning"><span class="header-section-number">0.4</span> Basic cleaning</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -279,8 +275,8 @@ $ source_sheet &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021,
 </details>
 </div>
 </section>
-<section id="total-passengers-by-month" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="total-passengers-by-month"><span class="header-section-number">1.5</span> Total passengers by month</h2>
+<section id="total-passengers-by-month" class="level2" data-number="0.5">
+<h2 data-number="0.5" class="anchored" data-anchor-id="total-passengers-by-month"><span class="header-section-number">0.5</span> Total passengers by month</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -309,8 +305,8 @@ $ source_sheet &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021,
 </div>
 </div>
 </section>
-<section id="total-passengers-by-airline" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="total-passengers-by-airline"><span class="header-section-number">1.6</span> Total passengers by airline</h2>
+<section id="total-passengers-by-airline" class="level2" data-number="0.6">
+<h2 data-number="0.6" class="anchored" data-anchor-id="total-passengers-by-airline"><span class="header-section-number">0.6</span> Total passengers by airline</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -350,8 +346,8 @@ $ source_sheet &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021,
 </div>
 </div>
 </section>
-<section id="top-10-airlines" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="top-10-airlines"><span class="header-section-number">1.7</span> Top 10 airlines</h2>
+<section id="top-10-airlines" class="level2" data-number="0.7">
+<h2 data-number="0.7" class="anchored" data-anchor-id="top-10-airlines"><span class="header-section-number">0.7</span> Top 10 airlines</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -377,8 +373,8 @@ $ source_sheet &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021,
 </div>
 </div>
 </section>
-<section id="yearly-passenger-trend" class="level2" data-number="1.8">
-<h2 data-number="1.8" class="anchored" data-anchor-id="yearly-passenger-trend"><span class="header-section-number">1.8</span> Yearly passenger trend</h2>
+<section id="yearly-passenger-trend" class="level2" data-number="0.8">
+<h2 data-number="0.8" class="anchored" data-anchor-id="yearly-passenger-trend"><span class="header-section-number">0.8</span> Yearly passenger trend</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -402,8 +398,8 @@ $ source_sheet &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021,
 </div>
 </div>
 </section>
-<section id="year-over-year-monthly-change" class="level2" data-number="1.9">
-<h2 data-number="1.9" class="anchored" data-anchor-id="year-over-year-monthly-change"><span class="header-section-number">1.9</span> Year-over-year monthly change</h2>
+<section id="year-over-year-monthly-change" class="level2" data-number="0.9">
+<h2 data-number="0.9" class="anchored" data-anchor-id="year-over-year-monthly-change"><span class="header-section-number">0.9</span> Year-over-year monthly change</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -436,10 +432,10 @@ $ source_sheet &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021,
 </div>
 </div>
 </section>
-<section id="visualizations" class="level2" data-number="1.10">
-<h2 data-number="1.10" class="anchored" data-anchor-id="visualizations"><span class="header-section-number">1.10</span> Visualizations</h2>
-<section id="total-passengers-over-time" class="level3" data-number="1.10.1">
-<h3 data-number="1.10.1" class="anchored" data-anchor-id="total-passengers-over-time"><span class="header-section-number">1.10.1</span> Total passengers over time</h3>
+<section id="visualizations" class="level2" data-number="0.10">
+<h2 data-number="0.10" class="anchored" data-anchor-id="visualizations"><span class="header-section-number">0.10</span> Visualizations</h2>
+<section id="total-passengers-over-time" class="level3" data-number="0.10.1">
+<h3 data-number="0.10.1" class="anchored" data-anchor-id="total-passengers-over-time"><span class="header-section-number">0.10.1</span> Total passengers over time</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -463,8 +459,8 @@ $ source_sheet &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021,
 </div>
 </div>
 </section>
-<section id="top-airlines" class="level3" data-number="1.10.2">
-<h3 data-number="1.10.2" class="anchored" data-anchor-id="top-airlines"><span class="header-section-number">1.10.2</span> Top airlines</h3>
+<section id="top-airlines" class="level3" data-number="0.10.2">
+<h3 data-number="0.10.2" class="anchored" data-anchor-id="top-airlines"><span class="header-section-number">0.10.2</span> Top airlines</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -494,8 +490,8 @@ $ source_sheet &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021,
 </div>
 </div>
 </section>
-<section id="airline-trend-over-time-for-top-5-airlines" class="level3" data-number="1.10.3">
-<h3 data-number="1.10.3" class="anchored" data-anchor-id="airline-trend-over-time-for-top-5-airlines"><span class="header-section-number">1.10.3</span> Airline trend over time for top 5 airlines</h3>
+<section id="airline-trend-over-time-for-top-5-airlines" class="level3" data-number="0.10.3">
+<h3 data-number="0.10.3" class="anchored" data-anchor-id="airline-trend-over-time-for-top-5-airlines"><span class="header-section-number">0.10.3</span> Airline trend over time for top 5 airlines</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -525,10 +521,10 @@ $ source_sheet &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021,
 </div>
 </section>
 </section>
-<section id="use-airport-metric-table" class="level2" data-number="1.11">
-<h2 data-number="1.11" class="anchored" data-anchor-id="use-airport-metric-table"><span class="header-section-number">1.11</span> Use airport metric table</h2>
-<section id="example-total-passengers-metric-from-metrics-file" class="level3" data-number="1.11.1">
-<h3 data-number="1.11.1" class="anchored" data-anchor-id="example-total-passengers-metric-from-metrics-file"><span class="header-section-number">1.11.1</span> Example: Total Passengers metric from metrics file</h3>
+<section id="use-airport-metric-table" class="level2" data-number="0.11">
+<h2 data-number="0.11" class="anchored" data-anchor-id="use-airport-metric-table"><span class="header-section-number">0.11</span> Use airport metric table</h2>
+<section id="example-total-passengers-metric-from-metrics-file" class="level3" data-number="0.11.1">
+<h3 data-number="0.11.1" class="anchored" data-anchor-id="example-total-passengers-metric-from-metrics-file"><span class="header-section-number">0.11.1</span> Example: Total Passengers metric from metrics file</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -577,10 +573,10 @@ $ source_sheet &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021,
 </div>
 </section>
 </section>
-<section id="create-a-baseline-model" class="level2" data-number="1.12">
-<h2 data-number="1.12" class="anchored" data-anchor-id="create-a-baseline-model"><span class="header-section-number">1.12</span> Create a baseline model</h2>
-<section id="simple-time-trend-model-using-monthly-totals" class="level3" data-number="1.12.1">
-<h3 data-number="1.12.1" class="anchored" data-anchor-id="simple-time-trend-model-using-monthly-totals"><span class="header-section-number">1.12.1</span> Simple time trend model using monthly totals</h3>
+<section id="create-a-baseline-model" class="level2" data-number="0.12">
+<h2 data-number="0.12" class="anchored" data-anchor-id="create-a-baseline-model"><span class="header-section-number">0.12</span> Create a baseline model</h2>
+<section id="simple-time-trend-model-using-monthly-totals" class="level3" data-number="0.12.1">
+<h3 data-number="0.12.1" class="anchored" data-anchor-id="simple-time-trend-model-using-monthly-totals"><span class="header-section-number">0.12.1</span> Simple time trend model using monthly totals</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -650,8 +646,8 @@ F-statistic: 30.06 on 12 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </section>
 </section>
-<section id="ao4-simulation-framework" class="level2" data-number="1.13">
-<h2 data-number="1.13" class="anchored" data-anchor-id="ao4-simulation-framework"><span class="header-section-number">1.13</span> AO4 Simulation Framework</h2>
+<section id="ao4-simulation-framework" class="level2" data-number="0.13">
+<h2 data-number="0.13" class="anchored" data-anchor-id="ao4-simulation-framework"><span class="header-section-number">0.13</span> AO4 Simulation Framework</h2>
 <p>Since your current data does not yet include: - sentiment - engagement - behavior we create proxy scenario variables manually.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -666,8 +662,8 @@ F-statistic: 30.06 on 12 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
 </details>
 </div>
 </section>
-<section id="example-simulation-formula" class="level2" data-number="1.14">
-<h2 data-number="1.14" class="anchored" data-anchor-id="example-simulation-formula"><span class="header-section-number">1.14</span> Example simulation formula:</h2>
+<section id="example-simulation-formula" class="level2" data-number="0.14">
+<h2 data-number="0.14" class="anchored" data-anchor-id="example-simulation-formula"><span class="header-section-number">0.14</span> Example simulation formula:</h2>
 <p>estimated uplift = engagement effect + sentiment effect + behavior effect</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -725,8 +721,8 @@ F-statistic: 30.06 on 12 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="scenario-testing" class="level2" data-number="1.15">
-<h2 data-number="1.15" class="anchored" data-anchor-id="scenario-testing"><span class="header-section-number">1.15</span> Scenario testing</h2>
+<section id="scenario-testing" class="level2" data-number="0.15">
+<h2 data-number="0.15" class="anchored" data-anchor-id="scenario-testing"><span class="header-section-number">0.15</span> Scenario testing</h2>
 <p>Best case, moderate case, conservative case</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -792,8 +788,8 @@ F-statistic: 30.06 on 12 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="simple-roi-proxy-framework" class="level2" data-number="1.16">
-<h2 data-number="1.16" class="anchored" data-anchor-id="simple-roi-proxy-framework"><span class="header-section-number">1.16</span> Simple ROI proxy framework</h2>
+<section id="simple-roi-proxy-framework" class="level2" data-number="0.16">
+<h2 data-number="0.16" class="anchored" data-anchor-id="simple-roi-proxy-framework"><span class="header-section-number">0.16</span> Simple ROI proxy framework</h2>
 <p>Since real revenue is not in the dataset, create a proxy value per passenger Adjust this assumption based on your project logic</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -844,8 +840,8 @@ F-statistic: 30.06 on 12 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
 </details>
 </div>
 </section>
-<section id="passenger-trend-over-time" class="level2" data-number="1.17">
-<h2 data-number="1.17" class="anchored" data-anchor-id="passenger-trend-over-time"><span class="header-section-number">1.17</span> Passenger trend over time</h2>
+<section id="passenger-trend-over-time" class="level2" data-number="0.17">
+<h2 data-number="0.17" class="anchored" data-anchor-id="passenger-trend-over-time"><span class="header-section-number">0.17</span> Passenger trend over time</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -869,8 +865,8 @@ F-statistic: 30.06 on 12 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="engagement-events-over-time" class="level2" data-number="1.18">
-<h2 data-number="1.18" class="anchored" data-anchor-id="engagement-events-over-time"><span class="header-section-number">1.18</span> Engagement (events) over time</h2>
+<section id="engagement-events-over-time" class="level2" data-number="0.18">
+<h2 data-number="0.18" class="anchored" data-anchor-id="engagement-events-over-time"><span class="header-section-number">0.18</span> Engagement (events) over time</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -893,8 +889,8 @@ F-statistic: 30.06 on 12 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="most-important-graph-ao4" class="level2" data-number="1.19">
-<h2 data-number="1.19" class="anchored" data-anchor-id="most-important-graph-ao4"><span class="header-section-number">1.19</span> MOST IMPORTANT GRAPH (AO4)</h2>
+<section id="most-important-graph-ao4" class="level2" data-number="0.19">
+<h2 data-number="0.19" class="anchored" data-anchor-id="most-important-graph-ao4"><span class="header-section-number">0.19</span> MOST IMPORTANT GRAPH (AO4)</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -918,8 +914,8 @@ F-statistic: 30.06 on 12 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="combined-dual-axis-style-visual-storytelling" class="level2" data-number="1.20">
-<h2 data-number="1.20" class="anchored" data-anchor-id="combined-dual-axis-style-visual-storytelling"><span class="header-section-number">1.20</span> Combined dual-axis style (visual storytelling)</h2>
+<section id="combined-dual-axis-style-visual-storytelling" class="level2" data-number="0.20">
+<h2 data-number="0.20" class="anchored" data-anchor-id="combined-dual-axis-style-visual-storytelling"><span class="header-section-number">0.20</span> Combined dual-axis style (visual storytelling)</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -944,8 +940,8 @@ F-statistic: 30.06 on 12 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="model-prediction-visualization" class="level2" data-number="1.21">
-<h2 data-number="1.21" class="anchored" data-anchor-id="model-prediction-visualization"><span class="header-section-number">1.21</span> Model prediction visualization</h2>
+<section id="model-prediction-visualization" class="level2" data-number="0.21">
+<h2 data-number="0.21" class="anchored" data-anchor-id="model-prediction-visualization"><span class="header-section-number">0.21</span> Model prediction visualization</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -980,8 +976,8 @@ F-statistic: 30.06 on 12 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="simulation-graph-ao4-highlight" class="level2" data-number="1.22">
-<h2 data-number="1.22" class="anchored" data-anchor-id="simulation-graph-ao4-highlight"><span class="header-section-number">1.22</span> Simulation graph (AO4 highlight)</h2>
+<section id="simulation-graph-ao4-highlight" class="level2" data-number="0.22">
+<h2 data-number="0.22" class="anchored" data-anchor-id="simulation-graph-ao4-highlight"><span class="header-section-number">0.22</span> Simulation graph (AO4 highlight)</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1028,9 +1024,8 @@ F-statistic: 30.06 on 12 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-</section>
-<section id="ao4---ce-cities-engagement-analysis" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> AO4 - CE Cities Engagement Analysis</h1>
+<section id="ao4---ce-cities-engagement-analysis" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> AO4 - CE Cities Engagement Analysis</h1>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1074,8 +1069,8 @@ F-statistic: 30.06 on 12 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="inspect-structure" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="inspect-structure"><span class="header-section-number">2.1</span> Inspect structure</h2>
+<section id="inspect-structure" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="inspect-structure"><span class="header-section-number">1.1</span> Inspect structure</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1114,8 +1109,8 @@ $ leads                  &lt;chr&gt; "Sadie", "Sadie", "N/A", "Connie", "Emily",
 </div>
 </div>
 </section>
-<section id="overall-summary" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="overall-summary"><span class="header-section-number">2.2</span> Overall summary</h2>
+<section id="overall-summary" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="overall-summary"><span class="header-section-number">1.2</span> Overall summary</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1140,8 +1135,8 @@ $ leads                  &lt;chr&gt; "Sadie", "Sadie", "N/A", "Connie", "Emily",
 </div>
 </div>
 </section>
-<section id="top-cities-by-total-engagements" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="top-cities-by-total-engagements"><span class="header-section-number">2.3</span> Top cities by total engagements</h2>
+<section id="top-cities-by-total-engagements" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="top-cities-by-total-engagements"><span class="header-section-number">1.3</span> Top cities by total engagements</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1170,8 +1165,8 @@ $ leads                  &lt;chr&gt; "Sadie", "Sadie", "N/A", "Connie", "Emily",
 </div>
 </div>
 </section>
-<section id="county-level-summary" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="county-level-summary"><span class="header-section-number">2.4</span> County-level summary</h2>
+<section id="county-level-summary" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="county-level-summary"><span class="header-section-number">1.4</span> County-level summary</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1204,8 +1199,8 @@ $ leads                  &lt;chr&gt; "Sadie", "Sadie", "N/A", "Connie", "Emily",
 </div>
 </div>
 </section>
-<section id="lead-level-summary" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="lead-level-summary"><span class="header-section-number">2.5</span> Lead-level summary</h2>
+<section id="lead-level-summary" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="lead-level-summary"><span class="header-section-number">1.5</span> Lead-level summary</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1240,8 +1235,8 @@ $ leads                  &lt;chr&gt; "Sadie", "Sadie", "N/A", "Connie", "Emily",
 </div>
 </div>
 </section>
-<section id="create-efficiency-metrics" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="create-efficiency-metrics"><span class="header-section-number">2.6</span> Create efficiency metrics</h2>
+<section id="create-efficiency-metrics" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="create-efficiency-metrics"><span class="header-section-number">1.6</span> Create efficiency metrics</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1276,8 +1271,8 @@ $ leads                  &lt;chr&gt; "Sadie", "Sadie", "N/A", "Connie", "Emily",
 </div>
 </div>
 </section>
-<section id="create-a-simple-weighted-engagement-score" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="create-a-simple-weighted-engagement-score"><span class="header-section-number">2.7</span> Create a simple weighted engagement score</h2>
+<section id="create-a-simple-weighted-engagement-score" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="create-a-simple-weighted-engagement-score"><span class="header-section-number">1.7</span> Create a simple weighted engagement score</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1314,11 +1309,11 @@ $ leads                  &lt;chr&gt; "Sadie", "Sadie", "N/A", "Connie", "Emily",
 </div>
 </div>
 </section>
-<section id="graphs" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="graphs"><span class="header-section-number">2.8</span> GRAPHS</h2>
+<section id="graphs" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="graphs"><span class="header-section-number">1.8</span> GRAPHS</h2>
 </section>
-<section id="top-10-cities-by-total-engagements" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="top-10-cities-by-total-engagements"><span class="header-section-number">2.9</span> Top 10 cities by total engagements</h2>
+<section id="top-10-cities-by-total-engagements" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="top-10-cities-by-total-engagements"><span class="header-section-number">1.9</span> Top 10 cities by total engagements</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1342,8 +1337,8 @@ $ leads                  &lt;chr&gt; "Sadie", "Sadie", "N/A", "Connie", "Emily",
 </div>
 </div>
 </section>
-<section id="county-comparison" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="county-comparison"><span class="header-section-number">2.10</span> County comparison</h2>
+<section id="county-comparison" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="county-comparison"><span class="header-section-number">1.10</span> County comparison</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1367,8 +1362,8 @@ $ leads                  &lt;chr&gt; "Sadie", "Sadie", "N/A", "Connie", "Emily",
 </div>
 </div>
 </section>
-<section id="visits-vs-engagements-relationship" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="visits-vs-engagements-relationship"><span class="header-section-number">2.11</span> Visits vs engagements relationship</h2>
+<section id="visits-vs-engagements-relationship" class="level2" data-number="1.11">
+<h2 data-number="1.11" class="anchored" data-anchor-id="visits-vs-engagements-relationship"><span class="header-section-number">1.11</span> Visits vs engagements relationship</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1392,8 +1387,8 @@ $ leads                  &lt;chr&gt; "Sadie", "Sadie", "N/A", "Connie", "Emily",
 </div>
 </div>
 </section>
-<section id="top-cities-by-engagement-score" class="level2" data-number="2.12">
-<h2 data-number="2.12" class="anchored" data-anchor-id="top-cities-by-engagement-score"><span class="header-section-number">2.12</span> Top cities by engagement score</h2>
+<section id="top-cities-by-engagement-score" class="level2" data-number="1.12">
+<h2 data-number="1.12" class="anchored" data-anchor-id="top-cities-by-engagement-score"><span class="header-section-number">1.12</span> Top cities by engagement score</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1421,8 +1416,8 @@ $ leads                  &lt;chr&gt; "Sadie", "Sadie", "N/A", "Connie", "Emily",
 </div>
 </div>
 </section>
-<section id="lead-comparison" class="level2" data-number="2.13">
-<h2 data-number="2.13" class="anchored" data-anchor-id="lead-comparison"><span class="header-section-number">2.13</span> Lead comparison</h2>
+<section id="lead-comparison" class="level2" data-number="1.13">
+<h2 data-number="1.13" class="anchored" data-anchor-id="lead-comparison"><span class="header-section-number">1.13</span> Lead comparison</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1447,10 +1442,10 @@ $ leads                  &lt;chr&gt; "Sadie", "Sadie", "N/A", "Connie", "Emily",
 </div>
 </section>
 </section>
-<section id="monthly-engagement" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Monthly Engagement</h1>
-<section id="total-engagement-across-all-cities" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="total-engagement-across-all-cities"><span class="header-section-number">3.1</span> Total engagement across all cities</h2>
+<section id="monthly-engagement" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Monthly Engagement</h1>
+<section id="total-engagement-across-all-cities" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="total-engagement-across-all-cities"><span class="header-section-number">2.1</span> Total engagement across all cities</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
@@ -1472,8 +1467,8 @@ $ leads                  &lt;chr&gt; "Sadie", "Sadie", "N/A", "Connie", "Emily",
 </div>
 </div>
 </section>
-<section id="convert-to-monthly-averages-12-months-assumption" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="convert-to-monthly-averages-12-months-assumption"><span class="header-section-number">3.2</span> Convert to monthly averages (12 months assumption)</h2>
+<section id="convert-to-monthly-averages-12-months-assumption" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="convert-to-monthly-averages-12-months-assumption"><span class="header-section-number">2.2</span> Convert to monthly averages (12 months assumption)</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Show code</summary>
