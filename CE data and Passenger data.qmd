@@ -1,0 +1,603 @@
+---
+title: "CE Data and Passenger Data"
+format: html
+---
+
+# Load Required Libraries
+
+```{r}
+library(readr)
+library(readxl)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+library(scales)
+library(tidyr)
+```
+
+# Import Passenger and Event Data
+
+```{r}
+passengers <- read_csv("pnfs_passengers_long.csv", show_col_types = FALSE)
+events <- read_excel("Events Tracker all - Copy - Copy.xlsx")
+```
+
+# Inspect Event Data Structure
+
+```{r}
+colnames(events)
+head(events)
+```
+
+# Clean Event Dates and Create Year/Month
+
+```{r}
+events_clean <- events %>%
+  mutate(
+    date = as.Date(`Event Date`),
+    year = year(date),
+    month = month(date)
+  )
+```
+
+# Check Event Date Quality
+
+```{r}
+summary(events_clean$date)
+```
+
+# Aggregate Events by Month
+
+```{r}
+events_monthly <- events_clean %>%
+  group_by(year, month) %>%
+  summarise(
+    total_events = n(),
+    .groups = "drop"
+  )
+
+print(events_monthly)
+
+```
+
+Counts how many community engagement events happened in each month.
+
+This creates a monthly event activity table.
+
+# Aggregate Passenger Data by Airline and Month
+
+```{r}
+passengers_airline <- passengers %>%
+  mutate(
+    date = as.Date(date),
+    year = year(date),
+    month = month(date)
+  ) %>%
+  group_by(year, month, airline) %>%
+  summarise(
+    passengers = sum(passengers, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+print(passengers_airline)
+```
+
+Converts passenger dates and summarizes passengers by:
+
+year
+month
+airline
+
+This creates the airline-level traffic dataset.
+
+# Merge Event Data with Passenger Data
+
+```{r}
+data_airline <- passengers_airline %>%
+  left_join(events_monthly, by = c("year", "month")) %>%
+  mutate(
+    total_events = ifelse(is.na(total_events), 0, total_events),
+    season = case_when(
+      month %in% c(12, 1, 2) ~ "Winter",
+      month %in% c(3, 4, 5) ~ "Spring",
+      month %in% c(6, 7, 8) ~ "Summer",
+      month %in% c(9, 10, 11) ~ "Fall"
+    ),
+    season = factor(season, levels = c("Winter", "Spring", "Summer", "Fall"))
+  ) %>%
+  arrange(year, month, airline)
+
+print(data_airline)
+```
+
+Merges monthly event totals into the airline passenger dataset.
+It also:
+
+fills missing event months with 0
+creates a season variable
+
+This is your main analysis dataset.
+
+# Summarize by Season and Airline
+
+```{r}
+season_summary <- data_airline %>%
+  group_by(season) %>%
+  summarise(
+    avg_passengers = mean(passengers, na.rm = TRUE),
+    avg_events = mean(total_events, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+print(season_summary)
+
+airline_summary <- data_airline %>%
+  group_by(airline) %>%
+  summarise(
+    total_passengers = sum(passengers, na.rm = TRUE),
+    avg_passengers = mean(passengers, na.rm = TRUE),
+    avg_events = mean(total_events, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(total_passengers))
+
+print(airline_summary)
+```
+
+Creates two summaries:
+
+season_summary = average passengers and events by season
+airline_summary = total and average passengers by airline
+
+This gives context before modeling.
+
+# Measure Airline-Level Correlation
+
+
+```{r}
+airline_effect <- data_airline %>%
+  group_by(airline) %>%
+  summarise(
+    correlation = cor(passengers, total_events, use = "complete.obs"),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(correlation))
+
+print(airline_effect)
+```
+
+Calculates the correlation between event activity and passengers for each airline.
+
+This helps identify which airlines appear more responsive to community engagement.
+
+# Build Base Regression Model
+
+
+```{r}
+model_base <- lm(passengers ~ total_events + airline + season, data = data_airline)
+summary(model_base)
+```
+
+Builds a linear regression model to estimate passenger traffic using:
+
+number of events
+airline
+season
+
+This is your baseline relationship model.
+
+# Build Interaction Model
+
+```{r}
+model_interaction <- lm(passengers ~ total_events * airline + season, data = data_airline)
+summary(model_interaction)
+```
+
+Builds a stronger model by allowing the effect of total_events to vary by airline.
+
+This helps answer:
+
+Do some airlines benefit more from events than others?
+
+# Choose Final Simulation Model
+
+
+```{r}
+model_sim <- model_interaction
+```
+
+Sets the interaction model as the main model used for scenario prediction.
+
+# Predict Baseline Passenger Levels
+
+```{r}
+data_airline <- data_airline %>%
+  mutate(
+    baseline_pred = predict(model_sim, newdata = data_airline)
+  )
+```
+
+Uses the model to estimate baseline predicted passengers for each airline-month record.
+
+This becomes the comparison point for all scenarios.
+
+# Simulate Summer +20% Event Scenario
+
+```{r}
+scenario_summer <- data_airline %>%
+  mutate(
+    simulated_events = ifelse(season == "Summer", total_events * 1.20, total_events)
+  )
+
+scenario_summer$scenario_pred <- predict(
+  model_sim,
+  newdata = scenario_summer %>% mutate(total_events = simulated_events)
+)
+
+scenario_summer <- scenario_summer %>%
+  mutate(
+    incremental_passengers = scenario_pred - baseline_pred,
+    scenario = "Summer +20%"
+  )
+
+```
+
+Simulates a 20% increase in events during summer only, then predicts the passenger impact.
+
+# Simulate Winter +20% Event Scenario
+
+```{r}
+scenario_winter <- data_airline %>%
+  mutate(
+    simulated_events = ifelse(season == "Winter", total_events * 1.20, total_events)
+  )
+
+scenario_winter$scenario_pred <- predict(
+  model_sim,
+  newdata = scenario_winter %>% mutate(total_events = simulated_events)
+)
+
+scenario_winter <- scenario_winter %>%
+  mutate(
+    incremental_passengers = scenario_pred - baseline_pred,
+    scenario = "Winter +20%"
+  )
+```
+
+Same process as above, but increases winter events by 20%.
+
+# Simulate Fall +20% Event Scenario
+
+
+```{r}
+scenario_fall <- data_airline %>%
+  mutate(
+    simulated_events = ifelse(season == "Fall", total_events * 1.20, total_events)
+  )
+
+scenario_fall$scenario_pred <- predict(
+  model_sim,
+  newdata = scenario_fall %>% mutate(total_events = simulated_events)
+)
+
+scenario_fall <- scenario_fall %>%
+  mutate(
+    incremental_passengers = scenario_pred - baseline_pred,
+    scenario = "Fall +20%"
+  )
+```
+
+Tests the effect of increasing fall events by 20%.
+
+# Simulate Spring +20% Event Scenario
+
+```{r}
+scenario_spring <- data_airline %>%
+  mutate(
+    simulated_events = ifelse(season == "Spring", total_events * 1.20, total_events)
+  )
+
+scenario_spring$scenario_pred <- predict(
+  model_sim,
+  newdata = scenario_spring %>% mutate(total_events = simulated_events)
+)
+
+scenario_spring <- scenario_spring %>%
+  mutate(
+    incremental_passengers = scenario_pred - baseline_pred,
+    scenario = "Spring +20%"
+  )
+```
+
+Tests the effect of increasing spring events by 20%.
+
+# Combine Seasonal Scenario Results
+
+```{r}
+scenario_results <- bind_rows(
+  scenario_summer,
+  scenario_winter,
+  scenario_fall,
+  scenario_spring
+)
+```
+
+Combines all seasonal scenarios into one table for comparison.
+
+# Summarize Seasonal Scenario Impact
+
+```{r}
+scenario_summary <- scenario_results %>%
+  group_by(scenario) %>%
+  summarise(
+    total_incremental_passengers = sum(incremental_passengers, na.rm = TRUE),
+    avg_incremental_passengers = mean(incremental_passengers, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(total_incremental_passengers))
+
+print(scenario_summary)
+```
+
+Shows how each airline performs under each scenario.
+
+# Identify Best Airlines by Scenario
+
+```{r}
+scenario_airline_summary <- scenario_results %>%
+  group_by(scenario, airline) %>%
+  summarise(
+    total_incremental_passengers = sum(incremental_passengers, na.rm = TRUE),
+    avg_incremental_passengers = mean(incremental_passengers, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(scenario, desc(total_incremental_passengers))
+
+print(scenario_airline_summary)
+```
+
+Finds the top 5 airlines with the highest projected passenger gains under each scenario.
+
+# Plot Events vs Passengers by Airline
+
+```{r}
+best_airlines_by_scenario <- scenario_airline_summary %>%
+  group_by(scenario) %>%
+  slice_max(order_by = total_incremental_passengers, n = 5) %>%
+  ungroup()
+
+print(best_airlines_by_scenario)
+```
+
+
+
+```{r}
+ggplot(data_airline, aes(x = total_events, y = passengers, color = airline)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Community Engagement Events vs Passengers by Airline",
+    x = "Total Events",
+    y = "Passengers"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+ggplot(scenario_summary, aes(x = reorder(scenario, total_incremental_passengers), y = total_incremental_passengers)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Incremental Passengers by Seasonal Event Scenario",
+    x = "Scenario",
+    y = "Incremental Passengers"
+  ) +
+  theme_minimal()
+
+```
+
+
+```{r}
+ggplot(best_airlines_by_scenario, aes(x = reorder(airline, total_incremental_passengers), y = total_incremental_passengers)) +
+  geom_col() +
+  coord_flip() +
+  facet_wrap(~scenario, scales = "free_y") +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Top Airlines by Seasonal Event Scenario",
+    x = "Airline",
+    y = "Incremental Passengers"
+  ) +
+  theme_minimal()
+```
+
+
+
+```{r}
+value_per_passenger <- 20
+
+scenario_summary <- scenario_summary %>%
+  mutate(
+    incremental_value = total_incremental_passengers * value_per_passenger
+  )
+
+print(scenario_summary)
+```
+
+
+```{r}
+scenarios <- data.frame(
+  scenario = c("Baseline", "+10%", "+20%", "+30%"),
+  multiplier = c(1.00, 1.10, 1.20, 1.30)
+)
+```
+
+
+```{r}
+scenario_results <- lapply(1:nrow(scenarios), function(i) {
+
+  mult <- scenarios$multiplier[i]
+  scen_name <- scenarios$scenario[i]
+
+  temp <- data_airline %>%
+    mutate(
+      simulated_events = total_events * mult
+    )
+
+  temp$predicted <- predict(
+    model_sim,
+    newdata = temp %>% mutate(total_events = simulated_events)
+  )
+
+  temp <- temp %>%
+    mutate(
+      baseline = predict(model_sim, newdata = data_airline),
+      incremental_passengers = predicted - baseline,
+      scenario = scen_name
+    )
+
+  return(temp)
+})
+
+scenario_results <- bind_rows(scenario_results)
+```
+
+
+```{r}
+scenario_summary <- scenario_results %>%
+  group_by(scenario) %>%
+  summarise(
+    total_incremental_passengers = sum(incremental_passengers, na.rm = TRUE),
+    avg_incremental_passengers = mean(incremental_passengers, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+print(scenario_summary)
+```
+
+```{r}
+event_cost <- 114958
+value_per_passenger <- 20
+
+scenario_summary <- scenario_summary %>%
+  mutate(
+    incremental_value = total_incremental_passengers * value_per_passenger,
+    roi = (incremental_value - event_cost) / event_cost
+  )
+
+print(scenario_summary)
+```
+
+
+```{r}
+best_scenario <- scenario_summary %>%
+  arrange(desc(roi))
+
+print(best_scenario)
+```
+
+
+```{r}
+ggplot(scenario_summary, aes(x = scenario, y = roi)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "ROI by Engagement Scenario",
+    x = "Scenario",
+    y = "ROI"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+print(scenario_summary$roi)
+```
+
+
+```{r}
+ggplot(scenario_summary, aes(x = scenario, y = total_incremental_passengers)) +
+  geom_col() +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Incremental Passengers by Scenario",
+    x = "Scenario",
+    y = "Passengers"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+event_cost <- 114958
+value_per_passenger <- 20
+
+scenario_summary <- scenario_summary %>%
+  mutate(
+    incremental_value = total_incremental_passengers * value_per_passenger,
+    roi_proxy = (incremental_value - event_cost) / event_cost,
+    return_multiple = incremental_value / event_cost
+  )
+
+print(scenario_summary)
+```
+
+```{r}
+ggplot(scenario_summary, aes(x = scenario, y = roi_proxy)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "ROI Proxy by Engagement Scenario",
+    x = "Scenario",
+    y = "ROI Proxy"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+ggplot(scenario_summary, aes(x = scenario, y = return_multiple)) +
+  geom_col() +
+  labs(
+    title = "Economic Return Multiple by Engagement Scenario",
+    x = "Scenario",
+    y = "Return Multiple (x)"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+scenario_summary <- scenario_summary %>%
+  mutate(
+    roi_display = roi_proxy / 100
+  )
+```
+
+
+
+```{r}
+ggplot(scenario_summary, aes(x = scenario, y = roi_display)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "ROI by Engagement Scenario",
+    x = "Scenario",
+    y = "ROI"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+scenario_summary <- scenario_summary %>%
+  mutate(
+    incremental_value = total_incremental_passengers * value_per_passenger,
+    roi_proxy = (incremental_value - event_cost) / event_cost,
+    return_multiple = incremental_value / event_cost
+  ) %>%
+  select(scenario, total_incremental_passengers, incremental_value, roi_proxy, return_multiple)
+
+print(scenario_summary)
+```
+

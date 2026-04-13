@@ -1,0 +1,494 @@
+---
+title: "ONT survey Response Analysis"
+format: html
+---
+
+```{r}
+library(readxl)
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(scales)
+library(tidyr)
+library(janitor)
+```
+
+```{r}
+survey <- read_excel("ONT in the Community Survey_Response Export.xlsx")
+```
+
+```{r}
+library(janitor)
+survey <- survey %>% clean_names()
+colnames(survey)
+```
+
+```{r}
+colnames(survey)
+glimpse(survey)
+```
+
+
+```{r}
+find_col <- function(df, keyword) {
+  nm <- names(df)
+  hit <- nm[str_detect(nm, keyword)]
+  if (length(hit) == 0) return(NA_character_)
+  hit[1]
+}
+
+col_fly_last_year     <- find_col(survey, "how_many_times.*flown.*last_year|flown.*last_year")
+col_ont_last_year     <- find_col(survey, "how_many_times.*ont.*last_year|flown_out_of_ont")
+col_consider_ont      <- find_col(survey, "would_you_consider.*ont|consider_flying")
+col_airport_most      <- find_col(survey, "which_airport.*most|airport_use_most")
+col_seen_heard        <- find_col(survey, "have_you_seen_or_heard.*ont|seen_or_heard")
+col_zip               <- find_col(survey, "zip|zipcode|zip_code")
+col_email_opt_in      <- find_col(survey, "email|opt_in|newsletter")
+
+print(col_fly_last_year)
+print(col_ont_last_year)
+print(col_consider_ont)
+print(col_airport_most)
+print(col_seen_heard)
+print(col_zip)
+print(col_email_opt_in)
+```
+
+```{r}
+survey_clean <- survey
+
+# Convert selected columns to character safely
+for (col in c(col_fly_last_year, col_ont_last_year, col_consider_ont,
+              col_airport_most, col_seen_heard, col_zip, col_email_opt_in)) {
+  if (!is.na(col) && col %in% names(survey_clean)) {
+    survey_clean[[col]] <- as.character(survey_clean[[col]])
+  }
+}
+```
+
+
+```{r}
+extract_number <- function(x) {
+  as.numeric(str_extract(x, "\\d+"))
+}
+
+# Build variables only when columns exist
+if (!is.na(col_fly_last_year)) {
+  survey_clean$flights_last_year_num <- extract_number(survey_clean[[col_fly_last_year]])
+}
+
+if (!is.na(col_ont_last_year)) {
+  survey_clean$ont_flights_last_year_num <- extract_number(survey_clean[[col_ont_last_year]])
+}
+
+if (!is.na(col_consider_ont)) {
+  survey_clean$consider_ont_yes <- ifelse(
+    str_detect(str_to_lower(survey_clean[[col_consider_ont]]), "yes"), 1, 0
+  )
+}
+
+if (!is.na(col_airport_most)) {
+  survey_clean$uses_ont_most <- ifelse(
+    str_detect(str_to_lower(survey_clean[[col_airport_most]]), "ont|ontario"), 1, 0
+  )
+}
+
+if (!is.na(col_seen_heard)) {
+  survey_clean$community_event_exposed <- ifelse(
+    str_detect(str_to_lower(survey_clean[[col_seen_heard]]), "community"), 1, 0
+  )
+
+  survey_clean$social_media_exposed <- ifelse(
+    str_detect(str_to_lower(survey_clean[[col_seen_heard]]), "social"), 1, 0
+  )
+
+  survey_clean$awareness_channel_count <- str_count(survey_clean[[col_seen_heard]], ",") + 1
+  survey_clean$awareness_channel_count[is.na(survey_clean[[col_seen_heard]])] <- NA
+}
+
+if (!is.na(col_email_opt_in)) {
+  survey_clean$email_opt_in_yes <- ifelse(
+    str_detect(str_to_lower(survey_clean[[col_email_opt_in]]), "yes"), 1, 0
+  )
+}
+
+if (!is.na(col_zip)) {
+  survey_clean$zip_code_clean <- str_extract(survey_clean[[col_zip]], "\\d{5}")
+}
+```
+
+
+```{r}
+survey_clean <- survey_clean %>%
+  mutate(
+    behavior_score = case_when(
+      !is.na(ont_flights_last_year_num) ~ ont_flights_last_year_num,
+      !is.na(flights_last_year_num) ~ flights_last_year_num * 0.5,
+      TRUE ~ NA_real_
+    ),
+    awareness_score = case_when(
+      !is.na(awareness_channel_count) ~ awareness_channel_count,
+      TRUE ~ NA_real_
+    ),
+    intent_score = case_when(
+      !is.na(consider_ont_yes) ~ consider_ont_yes,
+      TRUE ~ NA_real_
+    )
+  )
+```
+
+```{r}
+overall_summary <- survey_clean %>%
+  summarise(
+    responses = n(),
+    avg_flights_last_year = mean(flights_last_year_num, na.rm = TRUE),
+    avg_ont_flights_last_year = mean(ont_flights_last_year_num, na.rm = TRUE),
+    pct_consider_ont = mean(consider_ont_yes, na.rm = TRUE),
+    pct_uses_ont_most = mean(uses_ont_most, na.rm = TRUE),
+    pct_community_event_exposed = mean(community_event_exposed, na.rm = TRUE),
+    pct_social_media_exposed = mean(social_media_exposed, na.rm = TRUE),
+    avg_awareness_channels = mean(awareness_channel_count, na.rm = TRUE),
+    pct_email_opt_in = mean(email_opt_in_yes, na.rm = TRUE)
+  ) %>%
+  mutate(
+    pct_consider_ont = percent(pct_consider_ont, accuracy = 0.1),
+    pct_uses_ont_most = percent(pct_uses_ont_most, accuracy = 0.1),
+    pct_community_event_exposed = percent(pct_community_event_exposed, accuracy = 0.1),
+    pct_social_media_exposed = percent(pct_social_media_exposed, accuracy = 0.1),
+    pct_email_opt_in = percent(pct_email_opt_in, accuracy = 0.1)
+  )
+
+print(overall_summary)
+```
+
+
+```{r}
+zip_summary <- survey_clean %>%
+  filter(!is.na(zip_code_clean)) %>%
+  count(zip_code_clean, sort = TRUE)
+
+print(head(zip_summary, 15))
+```
+
+
+```{r}
+if ("community_event_exposed" %in% names(survey_clean) &&
+    "consider_ont_yes" %in% names(survey_clean)) {
+
+  exposure_summary <- survey_clean %>%
+    group_by(community_event_exposed) %>%
+    summarise(
+      responses = n(),
+      pct_consider_ont = mean(consider_ont_yes, na.rm = TRUE),
+      avg_behavior_score = mean(behavior_score, na.rm = TRUE),
+      avg_awareness_score = mean(awareness_score, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    mutate(
+      community_event_exposed = ifelse(community_event_exposed == 1, "Exposed", "Not Exposed"),
+      pct_consider_ont = percent(pct_consider_ont, accuracy = 0.1)
+    )
+
+  print(exposure_summary)
+}
+
+```
+
+
+
+```{r}
+if ("uses_ont_most" %in% names(survey_clean) &&
+    "consider_ont_yes" %in% names(survey_clean)) {
+
+  airport_summary <- survey_clean %>%
+    group_by(uses_ont_most) %>%
+    summarise(
+      responses = n(),
+      pct_consider_ont = mean(consider_ont_yes, na.rm = TRUE),
+      avg_ont_flights = mean(ont_flights_last_year_num, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    mutate(
+      uses_ont_most = ifelse(uses_ont_most == 1, "Uses ONT Most", "Uses Other Airport Most"),
+      pct_consider_ont = percent(pct_consider_ont, accuracy = 0.1)
+    )
+
+  print(airport_summary)
+}
+```
+
+
+
+```{r}
+ggplot(head(zip_summary, 10), aes(x = reorder(zip_code_clean, n), y = n)) +
+  geom_col() +
+  coord_flip() +
+  labs(
+    title = "Top ZIP Codes in ONT Community Survey",
+    x = "ZIP Code",
+    y = "Responses"
+  ) +
+  theme_minimal()
+
+```
+
+
+```{r}
+if (exists("exposure_summary")) {
+  ggplot(exposure_summary, aes(x = community_event_exposed, y = as.numeric(str_remove(pct_consider_ont, "%")))) +
+    geom_col() +
+    labs(
+      title = "Consider Flying ONT by Community Event Exposure",
+      x = "Community Event Exposure",
+      y = "Percent Considering ONT"
+    ) +
+    theme_minimal()
+}
+```
+
+
+```{r}
+if ("ont_flights_last_year_num" %in% names(survey_clean)) {
+  ggplot(survey_clean, aes(x = ont_flights_last_year_num)) +
+    geom_histogram(binwidth = 1) +
+    labs(
+      title = "Distribution of Flights Out of ONT in Last Year",
+      x = "Number of ONT Flights",
+      y = "Respondents"
+    ) +
+    theme_minimal()
+}
+```
+
+
+```{r}
+ survey_clean <- survey %>%
+  mutate(
+    intent_score = case_when(
+      str_detect(str_to_lower(would_you_consider_flying_out_of_ont_after_today), "yes|definitely") ~ 1,
+      str_detect(str_to_lower(would_you_consider_flying_out_of_ont_after_today), "maybe|likely") ~ 0.5,
+      str_detect(str_to_lower(would_you_consider_flying_out_of_ont_after_today), "no|not") ~ 0,
+      TRUE ~ NA_real_
+    )
+  )
+```
+
+```{r}
+unique(survey$would_you_consider_flying_out_of_ont_after_today)
+```
+
+
+
+```{r}
+ao4_survey_model <- lm(
+  intent_score ~ awareness_score + behavior_score + community_event_exposed + social_media_exposed,
+  data = survey_clean
+)
+
+summary(ao4_survey_model)
+```
+
+
+```{r}
+library(readxl)
+library(dplyr)
+library(stringr)
+library(janitor)
+
+survey <- read_excel("ONT in the Community Survey_Response Export.xlsx") %>%
+  clean_names()
+
+# Inspect raw values first
+unique(survey$how_many_times_have_you_flown_in_the_last_year)
+unique(survey$how_many_times_have_you_flown_out_of_ont_in_the_last_year)
+unique(survey$would_you_consider_flying_out_of_ont_after_today)
+unique(survey$which_airport_do_you_use_the_most)
+
+table(survey$community_event, useNA = "ifany")
+table(survey$social_media, useNA = "ifany")
+```
+
+
+```{r}
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(scales)
+
+# Start from the cleaned survey
+survey_clean <- survey %>%
+  mutate(
+    # 1) behavior variables
+    flights_last_year_num = as.numeric(str_extract(how_many_times_have_you_flown_in_the_last_year, "\\d+")),
+    ont_flights_last_year_num = as.numeric(str_extract(how_many_times_have_you_flown_out_of_ont_in_the_last_year, "\\d+")),
+
+    # 2) intent variable
+    consider_ont_yes = case_when(
+      str_to_lower(would_you_consider_flying_out_of_ont_after_today) %in% c("yes", "y") ~ 1,
+      str_to_lower(would_you_consider_flying_out_of_ont_after_today) %in% c("no", "n") ~ 0,
+      TRUE ~ NA_real_
+    ),
+
+    # 3) airport usage
+    uses_ont_most = case_when(
+      str_detect(str_to_lower(which_airport_do_you_use_the_most), "ont|ontario") ~ 1,
+      is.na(which_airport_do_you_use_the_most) ~ NA_real_,
+      TRUE ~ 0
+    ),
+
+    # 4) channel exposure columns are already separate in your file
+    social_media_exposed = case_when(
+      is.na(social_media) ~ 0,
+      social_media != "" ~ 1,
+      TRUE ~ 0
+    ),
+
+    online_ad_exposed = case_when(
+      is.na(online_ad) ~ 0,
+      online_ad != "" ~ 1,
+      TRUE ~ 0
+    ),
+
+    billboard_exposed = case_when(
+      is.na(billboard) ~ 0,
+      billboard != "" ~ 1,
+      TRUE ~ 0
+    ),
+
+    tv_exposed = case_when(
+      is.na(tv_commercial) ~ 0,
+      tv_commercial != "" ~ 1,
+      TRUE ~ 0
+    ),
+
+    radio_exposed = case_when(
+      is.na(radio) ~ 0,
+      radio != "" ~ 1,
+      TRUE ~ 0
+    ),
+
+    community_event_exposed = case_when(
+      is.na(community_event) ~ 0,
+      community_event != "" ~ 1,
+      TRUE ~ 0
+    ),
+
+    not_seen_anywhere = case_when(
+      is.na(i_have_not_seen_or_heard_ont_anywhere) ~ 0,
+      i_have_not_seen_or_heard_ont_anywhere != "" ~ 1,
+      TRUE ~ 0
+    ),
+
+    # 5) awareness score = number of channels selected
+    awareness_score =
+      social_media_exposed +
+      online_ad_exposed +
+      billboard_exposed +
+      tv_exposed +
+      radio_exposed +
+      community_event_exposed,
+
+    # 6) behavior score
+    behavior_score = case_when(
+      !is.na(ont_flights_last_year_num) ~ ont_flights_last_year_num,
+      !is.na(flights_last_year_num) ~ flights_last_year_num * 0.5,
+      TRUE ~ NA_real_
+    ),
+
+    # 7) final intent score
+    intent_score = consider_ont_yes,
+
+    # 8) email opt-in
+    email_opt_in_yes = case_when(
+      str_to_lower(do_you_want_to_receive_marketing_and_promotion_emails_from_ont_regarding_discounts_new_route_announcements_and_more) %in% c("yes", "y") ~ 1,
+      str_to_lower(do_you_want_to_receive_marketing_and_promotion_emails_from_ont_regarding_discounts_new_route_announcements_and_more) %in% c("no", "n") ~ 0,
+      TRUE ~ NA_real_
+    )
+  )
+```
+
+
+```{r}
+summary(survey_clean[, c(
+  "intent_score",
+  "awareness_score",
+  "behavior_score",
+  "community_event_exposed",
+  "social_media_exposed"
+)])
+```
+
+
+```{r}
+survey_model_data <- survey_clean %>%
+  select(intent_score, awareness_score, behavior_score, community_event_exposed, social_media_exposed) %>%
+  filter(
+    !is.na(intent_score),
+    !is.na(awareness_score),
+    !is.na(behavior_score)
+  )
+
+nrow(survey_model_data)
+head(survey_model_data)
+```
+
+```{r}
+ao4_survey_model <- lm(
+  intent_score ~ awareness_score + behavior_score + community_event_exposed + social_media_exposed,
+  data = survey_model_data
+)
+
+summary(ao4_survey_model)
+```
+
+
+```{r}
+overall_summary <- survey_clean %>%
+  summarise(
+    responses = n(),
+    avg_flights_last_year = mean(flights_last_year_num, na.rm = TRUE),
+    avg_ont_flights_last_year = mean(ont_flights_last_year_num, na.rm = TRUE),
+    pct_consider_ont = mean(intent_score, na.rm = TRUE),
+    pct_uses_ont_most = mean(uses_ont_most, na.rm = TRUE),
+    pct_community_event_exposed = mean(community_event_exposed, na.rm = TRUE),
+    pct_social_media_exposed = mean(social_media_exposed, na.rm = TRUE),
+    avg_awareness_score = mean(awareness_score, na.rm = TRUE),
+    pct_email_opt_in = mean(email_opt_in_yes, na.rm = TRUE)
+  )
+
+print(overall_summary)
+```
+
+
+```{r}
+exposure_summary <- survey_clean %>%
+  group_by(community_event_exposed) %>%
+  summarise(
+    responses = n(),
+    pct_consider_ont = mean(intent_score, na.rm = TRUE),
+    avg_behavior_score = mean(behavior_score, na.rm = TRUE),
+    avg_awareness_score = mean(awareness_score, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+print(exposure_summary)
+```
+
+
+```{r}
+ggplot(exposure_summary, aes(x = factor(community_event_exposed), y = pct_consider_ont)) +
+  geom_col() +
+  scale_y_continuous(labels = percent_format()) +
+  labs(
+    title = "Consider Flying ONT by Community Event Exposure",
+    x = "Community Event Exposure (0 = No, 1 = Yes)",
+    y = "Percent Considering ONT"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+summary(ao4_survey_model)
+```
+
