@@ -1,0 +1,820 @@
+---
+title: "Ontario Airport A04"
+author: "Saurabh Parate"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    code-fold: show
+    code-summary: "Show code"
+    df-print: paged
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: false
+---
+
+# Community Engagement Tracker Data Analysis
+
+## Install / load packages
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(readr)
+library(dplyr)
+```
+
+## Read the cleaned data
+
+```{r}
+passengers <- read_csv("pnfs_passengers_long.csv", show_col_types = FALSE)
+metrics <- read_csv("pnfs_key_metrics_long.csv", show_col_types = FALSE)
+```
+
+## Inspect the data
+
+```{r}
+glimpse(passengers)
+glimpse(metrics)
+
+summary(passengers$passengers)
+summary(metrics$value)
+```
+
+## Basic cleaning
+
+```{r}
+passengers <- passengers %>%
+  mutate(
+    date = as.Date(date),
+    year = as.integer(year),
+    month_num = as.integer(month_num),
+    passengers = as.numeric(passengers)
+  ) %>%
+  filter(!is.na(passengers))
+
+metrics <- metrics %>%
+  mutate(
+    date = as.Date(date),
+    year = as.integer(year),
+    month_num = as.integer(month_num),
+    value = as.numeric(value)
+  ) %>%
+  filter(!is.na(value))
+```
+
+## Total passengers by month
+
+```{r}
+monthly_total <- passengers %>%
+  group_by(date, year, month_num) %>%
+  summarise(total_passengers = sum(passengers, na.rm = TRUE), .groups = "drop") %>%
+  arrange(date)
+
+print(monthly_total)
+```
+
+## Total passengers by airline
+
+```{r}
+airline_totals <- passengers %>%
+  group_by(airline) %>%
+  summarise(
+    total_passengers = sum(passengers, na.rm = TRUE),
+    avg_monthly_passengers = mean(passengers, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(total_passengers))
+
+print(airline_totals)
+```
+
+## Top 10 airlines
+
+```{r}
+top_10_airlines <- airline_totals %>%
+  slice_max(order_by = total_passengers, n = 10)
+
+print(top_10_airlines)
+```
+
+## Yearly passenger trend
+
+```{r}
+yearly_total <- passengers %>%
+  group_by(year) %>%
+  summarise(total_passengers = sum(passengers, na.rm = TRUE), .groups = "drop") %>%
+  arrange(year)
+
+print(yearly_total)
+```
+
+## Year-over-year monthly change
+
+```{r}
+monthly_yoy <- monthly_total %>%
+  arrange(month_num, year) %>%
+  group_by(month_num) %>%
+  mutate(
+    yoy_change = total_passengers - lag(total_passengers),
+    yoy_pct = (total_passengers - lag(total_passengers)) / lag(total_passengers) * 100
+  ) %>%
+  ungroup()
+
+print(monthly_yoy)
+```
+
+## Visualizations
+
+### Total passengers over time
+
+```{r}
+ggplot(monthly_total, aes(x = date, y = total_passengers)) +
+  geom_line(linewidth = 1) +
+  geom_point() +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Ontario Airport Monthly Passenger Trend",
+    x = "Date",
+    y = "Total Passengers"
+  ) +
+  theme_minimal()
+```
+
+### Top airlines
+
+```{r}
+top_airlines_data <- passengers %>%
+  filter(airline %in% top_10_airlines$airline) %>%
+  group_by(airline) %>%
+  summarise(total_passengers = sum(passengers, na.rm = TRUE), .groups = "drop") %>%
+  arrange(desc(total_passengers))
+
+ggplot(top_airlines_data, aes(x = reorder(airline, total_passengers), y = total_passengers)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Top 10 Airlines by Total Passengers",
+    x = "Airline",
+    y = "Passengers"
+  ) +
+  theme_minimal()
+
+```
+
+### Airline trend over time for top 5 airlines
+
+```{r}
+top_5 <- top_10_airlines %>% slice_head(n = 5) %>% pull(airline)
+
+passengers %>%
+  filter(airline %in% top_5) %>%
+  group_by(date, airline) %>%
+  summarise(total_passengers = sum(passengers, na.rm = TRUE), .groups = "drop") %>%
+  ggplot(aes(x = date, y = total_passengers, linetype = airline)) +
+  geom_line(linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Monthly Passenger Trends for Top 5 Airlines",
+    x = "Date",
+    y = "Passengers"
+  ) +
+  theme_minimal()
+```
+
+## Use airport metric table
+
+### Example: Total Passengers metric from metrics file
+```{r}
+total_metric <- metrics %>%
+  filter(metric == "Total Passengers") %>%
+  arrange(date)
+
+print(total_metric)
+
+ggplot(total_metric, aes(x = date, y = value)) +
+  geom_line(linewidth = 1) +
+  geom_point() +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Official Total Passenger Metric Over Time",
+    x = "Date",
+    y = "Passengers"
+  ) +
+  theme_minimal()
+```
+
+## Create a baseline model
+
+### Simple time trend model using monthly totals
+
+```{r}
+baseline_data <- monthly_total %>%
+  mutate(
+    time_index = row_number(),
+    month_factor = factor(month_num)
+  )
+
+baseline_model <- lm(total_passengers ~ time_index + month_factor, data = baseline_data)
+summary(baseline_model)
+
+baseline_data$predicted_baseline <- predict(baseline_model, newdata = baseline_data)
+
+ggplot(baseline_data, aes(x = date)) +
+  geom_line(aes(y = total_passengers, linetype = "Actual"), linewidth = 1) +
+  geom_line(aes(y = predicted_baseline, linetype = "Baseline Prediction"), linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Actual vs Baseline Predicted Passengers",
+    x = "Date",
+    y = "Passengers",
+    linetype = ""
+  ) +
+  theme_minimal()
+
+```
+
+## AO4 Simulation Framework
+
+Since your current data does not yet include:
+- sentiment
+- engagement
+- behavior
+we create proxy scenario variables manually.
+
+```{r}
+simulation_data <- baseline_data %>%
+  mutate(
+    # Placeholder proxy inputs (edit these later)
+    engagement_score = 50,   # 0 to 100
+    sentiment_score = 0.10,  # -1 to +1
+    behavior_score = 0.20    # 0 to 1
+  )
+```
+
+## Example simulation formula:
+
+estimated uplift = engagement effect + sentiment effect + behavior effect
+
+```{r}
+simulation_data <- simulation_data %>%
+  mutate(
+    estimated_uplift_pct =
+      (engagement_score * 0.0015) +
+      (sentiment_score * 0.08) +
+      (behavior_score * 0.12),
+
+    simulated_passengers = predicted_baseline * (1 + estimated_uplift_pct)
+  )
+
+print(simulation_data %>%
+        select(date, total_passengers, predicted_baseline, estimated_uplift_pct, simulated_passengers))
+
+ggplot(simulation_data, aes(x = date)) +
+  geom_line(aes(y = predicted_baseline, linetype = "Baseline"), linewidth = 1) +
+  geom_line(aes(y = simulated_passengers, linetype = "Simulated Strategy Impact"), linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Simulation of Future Community Engagement Impact",
+    x = "Date",
+    y = "Passengers",
+    linetype = ""
+  ) +
+  theme_minimal()
+```
+
+## Scenario testing
+
+Best case, moderate case, conservative case
+
+```{r}
+scenarios <- tibble(
+  scenario = c("Conservative", "Moderate", "Best Case"),
+  engagement_score = c(40, 60, 80),
+  sentiment_score = c(0.05, 0.12, 0.20),
+  behavior_score = c(0.10, 0.20, 0.35)
+)
+
+scenario_results <- scenarios %>%
+  mutate(
+    estimated_uplift_pct =
+      (engagement_score * 0.0015) +
+      (sentiment_score * 0.08) +
+      (behavior_score * 0.12)
+  ) %>%
+  crossing(baseline_data %>% select(date, predicted_baseline)) %>%
+  mutate(
+    simulated_passengers = predicted_baseline * (1 + estimated_uplift_pct)
+  )
+
+print(scenario_results)
+
+ggplot(scenario_results, aes(x = date, y = simulated_passengers, linetype = scenario)) +
+  geom_line(linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Scenario Simulation for Community Engagement Strategies",
+    x = "Date",
+    y = "Simulated Passengers",
+    linetype = "Scenario"
+  ) +
+  theme_minimal()
+```
+
+## Simple ROI proxy framework
+
+Since real revenue is not in the dataset, create a proxy value per passenger
+Adjust this assumption based on your project logic
+
+```{r}
+value_per_passenger <- 18
+
+scenario_roi <- scenario_results %>%
+  mutate(
+    baseline_value = predicted_baseline * value_per_passenger,
+    simulated_value = simulated_passengers * value_per_passenger,
+    incremental_value = simulated_value - baseline_value
+  ) %>%
+  group_by(scenario) %>%
+  summarise(
+    total_baseline_value = sum(baseline_value, na.rm = TRUE),
+    total_simulated_value = sum(simulated_value, na.rm = TRUE),
+    total_incremental_value = sum(incremental_value, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+print(scenario_roi)
+```
+
+
+
+
+```{r}
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(scales)
+
+data <- read_excel("ao4_model_ready_dataset.xlsx")
+
+data <- data %>%
+  arrange(year, month) %>%
+  mutate(
+    date = as.Date(paste(year, month, "01", sep = "-"))
+  )
+```
+
+
+## Passenger trend over time
+
+```{r}
+ggplot(data, aes(x = date, y = total_passengers)) +
+  geom_line(linewidth = 1) +
+  geom_point() +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Monthly Passenger Trend",
+    x = "Date",
+    y = "Passengers"
+  ) +
+  theme_minimal()
+```
+
+## Engagement (events) over time
+
+```{r}
+ggplot(data, aes(x = date, y = total_events)) +
+  geom_line(linewidth = 1) +
+  geom_point() +
+  labs(
+    title = "Community Engagement Activity Over Time",
+    x = "Date",
+    y = "Number of Events"
+  ) +
+  theme_minimal()
+```
+
+## MOST IMPORTANT GRAPH (AO4)
+
+
+```{r}
+ggplot(data, aes(x = total_events, y = total_passengers)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Impact of Community Engagement on Passenger Volume",
+    x = "Number of Events",
+    y = "Passengers"
+  ) +
+  theme_minimal()
+```
+
+## Combined dual-axis style (visual storytelling)
+
+```{r}
+ggplot(data, aes(x = date)) +
+  geom_line(aes(y = total_passengers, linetype = "Passengers"), linewidth = 1) +
+  geom_line(aes(y = total_events * 10000, linetype = "Events (scaled)"), linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Passengers vs Engagement Activity",
+    x = "Date",
+    y = "Passengers",
+    linetype = ""
+  ) +
+  theme_minimal()
+```
+
+## Model prediction visualization
+
+```{r}
+data <- data %>%
+  mutate(
+    time_index = row_number(),
+    month_factor = factor(month)
+  )
+
+model <- lm(total_passengers ~ total_events + time_index + month_factor, data = data)
+
+data$predicted <- predict(model, newdata = data)
+
+ggplot(data, aes(x = date)) +
+  geom_line(aes(y = total_passengers, linetype = "Actual"), linewidth = 1) +
+  geom_line(aes(y = predicted, linetype = "Predicted"), linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Actual vs Predicted Passengers",
+    x = "Date",
+    y = "Passengers",
+    linetype = ""
+  ) +
+  theme_minimal()
+```
+
+## Simulation graph (AO4 highlight)
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(scales)
+
+data <- data %>%
+  mutate(
+    simulated_high = predicted * 1.10,
+    simulated_low = predicted * 0.95
+  )
+
+ggplot(data, aes(x = date)) +
+  geom_line(aes(y = predicted, color = "Baseline", linetype = "Baseline"), linewidth = 1) +
+  geom_line(aes(y = simulated_high, color = "High Engagement", linetype = "High Engagement"), linewidth = 1) +
+  geom_line(aes(y = simulated_low, color = "Low Engagement", linetype = "Low Engagement"), linewidth = 1) +
+  scale_color_manual(values = c(
+    "Baseline" = "black",
+    "High Engagement" = "blue",
+    "Low Engagement" = "red"
+  )) +
+  scale_linetype_manual(values = c(
+    "Baseline" = "solid",
+    "High Engagement" = "dashed",
+    "Low Engagement" = "dotted"
+  )) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Simulation of Engagement Strategies",
+    x = "Date",
+    y = "Passengers",
+    color = "Scenario",
+    linetype = "Scenario"
+  ) +
+  theme_minimal()
+```
+
+# AO4 - CE Cities Engagement Analysis
+
+```{r}
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(scales)
+library(stringr)
+library(tidyr)
+```
+
+```{r}
+ce <- read_excel("FY 24-25 CE Cities-Engagements.xlsx", sheet = "Sheet1")
+```
+
+
+```{r}
+names(ce) <- c(
+  "city_name",
+  "county",
+  "total_visits",
+  "total_engagements",
+  "total_presentations",
+  "total_community_booths",
+  "leads"
+)
+
+```
+
+```{r}
+ce <- ce %>%
+  mutate(
+    city_name = str_trim(city_name),
+    county = str_trim(county),
+    leads = str_trim(leads),
+    across(c(total_visits, total_engagements, total_presentations, total_community_booths), as.numeric)
+  )
+```
+
+## Inspect structure
+
+```{r}
+glimpse(ce)
+summary(ce)
+```
+
+## Overall summary
+
+```{r}
+overall_summary <- ce %>%
+  summarise(
+    total_cities = n(),
+    total_visits = sum(total_visits, na.rm = TRUE),
+    total_engagements = sum(total_engagements, na.rm = TRUE),
+    total_presentations = sum(total_presentations, na.rm = TRUE),
+    total_booths = sum(total_community_booths, na.rm = TRUE),
+    avg_engagements_per_city = mean(total_engagements, na.rm = TRUE)
+  )
+
+print(overall_summary)
+```
+
+## Top cities by total engagements
+
+```{r}
+top_cities <- ce %>%
+  arrange(desc(total_engagements)) %>%
+  select(city_name, county, total_engagements, total_visits, total_presentations, total_community_booths) %>%
+  slice_head(n = 10)
+
+print(top_cities)
+```
+
+## County-level summary
+
+```{r}
+county_summary <- ce %>%
+  group_by(county) %>%
+  summarise(
+    cities = n(),
+    total_visits = sum(total_visits, na.rm = TRUE),
+    total_engagements = sum(total_engagements, na.rm = TRUE),
+    total_presentations = sum(total_presentations, na.rm = TRUE),
+    total_booths = sum(total_community_booths, na.rm = TRUE),
+    avg_engagements_per_city = mean(total_engagements, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(total_engagements))
+
+print(county_summary)
+```
+
+## Lead-level summary
+
+```{r}
+lead_summary <- ce %>%
+  mutate(leads = ifelse(is.na(leads) | leads == "", "Unknown", leads)) %>%
+  group_by(leads) %>%
+  summarise(
+    cities = n(),
+    total_visits = sum(total_visits, na.rm = TRUE),
+    total_engagements = sum(total_engagements, na.rm = TRUE),
+    total_presentations = sum(total_presentations, na.rm = TRUE),
+    total_booths = sum(total_community_booths, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(total_engagements))
+
+print(lead_summary)
+```
+
+## Create efficiency metrics
+
+```{r}
+ce <- ce %>%
+  mutate(
+    engagements_per_visit = ifelse(total_visits > 0, total_engagements / total_visits, NA),
+    presentations_per_visit = ifelse(total_visits > 0, total_presentations / total_visits, NA),
+    booths_per_visit = ifelse(total_visits > 0, total_community_booths / total_visits, NA)
+  )
+
+efficiency_summary <- ce %>%
+  arrange(desc(engagements_per_visit)) %>%
+  select(city_name, county, total_visits, total_engagements, engagements_per_visit) %>%
+  slice_head(n = 10)
+
+print(efficiency_summary)
+```
+
+## Create a simple weighted engagement score
+
+```{r}
+ce <- ce %>%
+  mutate(
+    engagement_score =
+      (total_engagements * 1.0) +
+      (total_presentations * 50) +
+      (total_community_booths * 40) +
+      (total_visits * 10)
+  )
+
+score_summary <- ce %>%
+  arrange(desc(engagement_score)) %>%
+  select(city_name, county, engagement_score, total_engagements, total_visits) %>%
+  slice_head(n = 10)
+
+print(score_summary)
+```
+
+## GRAPHS 
+## Top 10 cities by total engagements
+
+```{r}
+ggplot(top_cities, aes(x = reorder(city_name, total_engagements), y = total_engagements)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Top 10 Cities by Total Engagements",
+    x = "City",
+    y = "Total Engagements"
+  ) +
+  theme_minimal()
+```
+
+## County comparison
+
+```{r}
+ggplot(county_summary, aes(x = reorder(county, total_engagements), y = total_engagements)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Total Engagements by County",
+    x = "County",
+    y = "Total Engagements"
+  ) +
+  theme_minimal()
+```
+
+## Visits vs engagements relationship
+
+```{r}
+ggplot(ce, aes(x = total_visits, y = total_engagements)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Relationship Between Visits and Engagements",
+    x = "Total Visits",
+    y = "Total Engagements"
+  ) +
+  theme_minimal()
+```
+
+## Top cities by engagement score
+
+```{r}
+top_score <- ce %>%
+  arrange(desc(engagement_score)) %>%
+  slice_head(n = 10)
+
+ggplot(top_score, aes(x = reorder(city_name, engagement_score), y = engagement_score)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Top 10 Cities by Weighted Engagement Score",
+    x = "City",
+    y = "Engagement Score"
+  ) +
+  theme_minimal()
+```
+
+## Lead comparison
+
+```{r}
+ggplot(lead_summary, aes(x = reorder(leads, total_engagements), y = total_engagements)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Total Engagements by Lead",
+    x = "Lead",
+    y = "Total Engagements"
+  ) +
+  theme_minimal()
+```
+
+# Monthly Engagement 
+
+## Total engagement across all cities
+
+```{r}
+total_engagement <- ce %>%
+  summarise(
+    total_engagements = sum(total_engagements, na.rm = TRUE),
+    total_visits = sum(total_visits, na.rm = TRUE),
+    total_presentations = sum(total_presentations, na.rm = TRUE),
+    total_booths = sum(total_community_booths, na.rm = TRUE)
+  )
+
+print(total_engagement)
+```
+
+## Convert to monthly averages (12 months assumption)
+
+```{r}
+monthly_engagement <- total_engagement %>%
+  mutate(
+    monthly_engagements = total_engagements / 12,
+    monthly_visits = total_visits / 12,
+    monthly_presentations = total_presentations / 12,
+    monthly_booths = total_booths / 12
+  )
+
+print(monthly_engagement)
+```
+
+```{r}
+months <- data.frame(
+  month = 1:12,
+  year = 2025
+)
+
+engagement_time <- months %>%
+  mutate(
+    total_events = monthly_engagement$monthly_engagements,
+    visits = monthly_engagement$monthly_visits,
+    presentations = monthly_engagement$monthly_presentations,
+    booths = monthly_engagement$monthly_booths
+  )
+
+print(engagement_time)
+```
+
+```{r}
+library(readxl)
+
+passengers <- read_excel("ao4_model_ready_dataset.xlsx")
+
+data <- passengers %>%
+  left_join(engagement_time, by = c("year", "month"))
+
+head(data)
+```
+
+
+
+
+```{r}
+library(readr)
+library(dplyr)
+library(lubridate)
+
+profile <- read_csv("Profile Performance.csv", show_col_types = FALSE)
+
+colnames(profile)
+head(profile)
+```
+
+
+```{r}
+library(dplyr)
+library(lubridate)
+
+profile <- profile %>%
+  mutate(
+    date = as.Date(Date, format = "%m-%d-%Y"),  # <-- FIXED FORMAT
+    year = year(date),
+    month = month(date),
+
+    impressions = as.numeric(Impressions),
+    engagement = as.numeric(Engagements),
+    comments = as.numeric(Comments),
+    shares = as.numeric(Shares)
+  )
+```
+
+
+

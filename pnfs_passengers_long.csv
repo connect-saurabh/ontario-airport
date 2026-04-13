@@ -1,0 +1,938 @@
+year,month_num,month,date,airline_raw,airline,passengers,source_sheet
+2021,1,Jan,2021-01-01,Alaska Airlines,Alaska Airlines,12108,2021
+2021,2,Feb,2021-02-01,Alaska Airlines,Alaska Airlines,13948,2021
+2021,3,Mar,2021-03-01,Alaska Airlines,Alaska Airlines,21810,2021
+2021,4,Apr,2021-04-01,Alaska Airlines,Alaska Airlines,29918,2021
+2021,5,May,2021-05-01,Alaska Airlines,Alaska Airlines,36081,2021
+2021,6,Jun,2021-06-01,Alaska Airlines,Alaska Airlines,43710,2021
+2021,7,Jul,2021-07-01,Alaska Airlines,Alaska Airlines,38171,2021
+2021,8,Aug,2021-08-01,Alaska Airlines,Alaska Airlines,45034,2021
+2021,9,Sep,2021-09-01,Alaska Airlines,Alaska Airlines,37403,2021
+2021,10,Oct,2021-10-01,Alaska Airlines,Alaska Airlines,44539,2021
+2021,11,Nov,2021-11-01,Alaska Airlines,Alaska Airlines,41870,2021
+2021,12,Dec,2021-12-01,Alaska Airlines,Alaska Airlines,39016,2021
+2021,1,Jan,2021-01-01,American Airlines,American Airlines,35887,2021
+2021,2,Feb,2021-02-01,American Airlines,American Airlines,31374,2021
+2021,3,Mar,2021-03-01,American Airlines,American Airlines,54337,2021
+2021,4,Apr,2021-04-01,American Airlines,American Airlines,60437,2021
+2021,5,May,2021-05-01,American Airlines,American Airlines,74239,2021
+2021,6,Jun,2021-06-01,American Airlines,American Airlines,93726,2021
+2021,7,Jul,2021-07-01,American Airlines,American Airlines,98753,2021
+2021,8,Aug,2021-08-01,American Airlines,American Airlines,89982,2021
+2021,9,Sep,2021-09-01,American Airlines,American Airlines,85199,2021
+2021,10,Oct,2021-10-01,American Airlines,American Airlines,95429,2021
+2021,11,Nov,2021-11-01,American Airlines,American Airlines,88360,2021
+2021,12,Dec,2021-12-01,American Airlines,American Airlines,78393,2021
+2021,1,Jan,2021-01-01,China Airlines,China Airlines,,2021
+2021,2,Feb,2021-02-01,China Airlines,China Airlines,,2021
+2021,3,Mar,2021-03-01,China Airlines,China Airlines,,2021
+2021,4,Apr,2021-04-01,China Airlines,China Airlines,,2021
+2021,5,May,2021-05-01,China Airlines,China Airlines,,2021
+2021,6,Jun,2021-06-01,China Airlines,China Airlines,327,2021
+2021,7,Jul,2021-07-01,China Airlines,China Airlines,427,2021
+2021,8,Aug,2021-08-01,China Airlines,China Airlines,387,2021
+2021,9,Sep,2021-09-01,China Airlines,China Airlines,216,2021
+2021,10,Oct,2021-10-01,China Airlines,China Airlines,236,2021
+2021,11,Nov,2021-11-01,China Airlines,China Airlines,244,2021
+2021,12,Dec,2021-12-01,China Airlines,China Airlines,277,2021
+2021,1,Jan,2021-01-01,Delta Air Lines,Delta Air Lines,20597,2021
+2021,2,Feb,2021-02-01,Delta Air Lines,Delta Air Lines,20453,2021
+2021,3,Mar,2021-03-01,Delta Air Lines,Delta Air Lines,30360,2021
+2021,4,Apr,2021-04-01,Delta Air Lines,Delta Air Lines,35425,2021
+2021,5,May,2021-05-01,Delta Air Lines,Delta Air Lines,50604,2021
+2021,6,Jun,2021-06-01,Delta Air Lines,Delta Air Lines,53330,2021
+2021,7,Jul,2021-07-01,Delta Air Lines,Delta Air Lines,59398,2021
+2021,8,Aug,2021-08-01,Delta Air Lines,Delta Air Lines,59211,2021
+2021,9,Sep,2021-09-01,Delta Air Lines,Delta Air Lines,51490,2021
+2021,10,Oct,2021-10-01,Delta Air Lines,Delta Air Lines,58910,2021
+2021,11,Nov,2021-11-01,Delta Air Lines,Delta Air Lines,52053,2021
+2021,12,Dec,2021-12-01,Delta Air Lines,Delta Air Lines,50192,2021
+2021,1,Jan,2021-01-01,Frontier Airlines,Frontier Airlines,2654,2021
+2021,2,Feb,2021-02-01,Frontier Airlines,Frontier Airlines,6708,2021
+2021,3,Mar,2021-03-01,Frontier Airlines,Frontier Airlines,21489,2021
+2021,4,Apr,2021-04-01,Frontier Airlines,Frontier Airlines,19143,2021
+2021,5,May,2021-05-01,Frontier Airlines,Frontier Airlines,26700,2021
+2021,6,Jun,2021-06-01,Frontier Airlines,Frontier Airlines,44019,2021
+2021,7,Jul,2021-07-01,Frontier Airlines,Frontier Airlines,58302,2021
+2021,8,Aug,2021-08-01,Frontier Airlines,Frontier Airlines,58881,2021
+2021,9,Sep,2021-09-01,Frontier Airlines,Frontier Airlines,51679,2021
+2021,10,Oct,2021-10-01,Frontier Airlines,Frontier Airlines,53822,2021
+2021,11,Nov,2021-11-01,Frontier Airlines,Frontier Airlines,44959,2021
+2021,12,Dec,2021-12-01,Frontier Airlines,Frontier Airlines,53785,2021
+2021,1,Jan,2021-01-01,JetBlue,JetBlue,,2021
+2021,2,Feb,2021-02-01,JetBlue,JetBlue,,2021
+2021,3,Mar,2021-03-01,JetBlue,JetBlue,,2021
+2021,4,Apr,2021-04-01,JetBlue,JetBlue,,2021
+2021,5,May,2021-05-01,JetBlue,JetBlue,,2021
+2021,6,Jun,2021-06-01,JetBlue,JetBlue,4437,2021
+2021,7,Jul,2021-07-01,JetBlue,JetBlue,6502,2021
+2021,8,Aug,2021-08-01,JetBlue,JetBlue,5718,2021
+2021,9,Sep,2021-09-01,JetBlue,JetBlue,4583,2021
+2021,10,Oct,2021-10-01,JetBlue,JetBlue,6062,2021
+2021,11,Nov,2021-11-01,JetBlue,JetBlue,7912,2021
+2021,12,Dec,2021-12-01,JetBlue,JetBlue,9201,2021
+2021,1,Jan,2021-01-01,Southwest Airlines Co,Southwest Airlines,62364,2021
+2021,2,Feb,2021-02-01,Southwest Airlines Co,Southwest Airlines,66732,2021
+2021,3,Mar,2021-03-01,Southwest Airlines Co,Southwest Airlines,110336,2021
+2021,4,Apr,2021-04-01,Southwest Airlines Co,Southwest Airlines,127376,2021
+2021,5,May,2021-05-01,Southwest Airlines Co,Southwest Airlines,143135,2021
+2021,6,Jun,2021-06-01,Southwest Airlines Co,Southwest Airlines,149988,2021
+2021,7,Jul,2021-07-01,Southwest Airlines Co,Southwest Airlines,163944,2021
+2021,8,Aug,2021-08-01,Southwest Airlines Co,Southwest Airlines,150774,2021
+2021,9,Sep,2021-09-01,Southwest Airlines Co,Southwest Airlines,167139,2021
+2021,10,Oct,2021-10-01,Southwest Airlines Co,Southwest Airlines,184118,2021
+2021,11,Nov,2021-11-01,Southwest Airlines Co,Southwest Airlines,185100,2021
+2021,12,Dec,2021-12-01,Southwest Airlines Co,Southwest Airlines,176522,2021
+2021,1,Jan,2021-01-01,United Air Lines Inc,United Airlines,11775,2021
+2021,2,Feb,2021-02-01,United Air Lines Inc,United Airlines,10995,2021
+2021,3,Mar,2021-03-01,United Air Lines Inc,United Airlines,15498,2021
+2021,4,Apr,2021-04-01,United Air Lines Inc,United Airlines,17223,2021
+2021,5,May,2021-05-01,United Air Lines Inc,United Airlines,17398,2021
+2021,6,Jun,2021-06-01,United Air Lines Inc,United Airlines,19646,2021
+2021,7,Jul,2021-07-01,United Air Lines Inc,United Airlines,26206,2021
+2021,8,Aug,2021-08-01,United Air Lines Inc,United Airlines,33721,2021
+2021,9,Sep,2021-09-01,United Air Lines Inc,United Airlines,35329,2021
+2021,10,Oct,2021-10-01,United Air Lines Inc,United Airlines,30068,2021
+2021,11,Nov,2021-11-01,United Air Lines Inc,United Airlines,32062,2021
+2021,12,Dec,2021-12-01,United Air Lines Inc,United Airlines,33184,2021
+2021,1,Jan,2021-01-01,Volaris,Volaris,6475,2021
+2021,2,Feb,2021-02-01,Volaris,Volaris,2021,2021
+2021,3,Mar,2021-03-01,Volaris,Volaris,2654,2021
+2021,4,Apr,2021-04-01,Volaris,Volaris,3598,2021
+2021,5,May,2021-05-01,Volaris,Volaris,11289,2021
+2021,6,Jun,2021-06-01,Volaris,Volaris,11324,2021
+2021,7,Jul,2021-07-01,Volaris,Volaris,12489,2021
+2021,8,Aug,2021-08-01,Volaris,Volaris,10790,2021
+2021,9,Sep,2021-09-01,Volaris,Volaris,9868,2021
+2021,10,Oct,2021-10-01,Volaris,Volaris,10363,2021
+2021,11,Nov,2021-11-01,Volaris,Volaris,11096,2021
+2021,12,Dec,2021-12-01,Volaris,Volaris,12179,2021
+2021,1,Jan,2021-01-01,All Other,All Others,,2021
+2021,2,Feb,2021-02-01,All Other,All Others,62,2021
+2021,3,Mar,2021-03-01,All Other,All Others,,2021
+2021,4,Apr,2021-04-01,All Other,All Others,,2021
+2021,5,May,2021-05-01,All Other,All Others,,2021
+2021,6,Jun,2021-06-01,All Other,All Others,,2021
+2021,7,Jul,2021-07-01,All Other,All Others,,2021
+2021,8,Aug,2021-08-01,All Other,All Others,221,2021
+2021,9,Sep,2021-09-01,All Other,All Others,,2021
+2021,10,Oct,2021-10-01,All Other,All Others,,2021
+2021,11,Nov,2021-11-01,All Other,All Others,533,2021
+2021,12,Dec,2021-12-01,All Other,All Others,153,2021
+2021,1,Jan,2021-01-01,Hawaiian Airlines,Hawaiian Airlines,,2021
+2021,2,Feb,2021-02-01,Hawaiian Airlines,Hawaiian Airlines,,2021
+2021,3,Mar,2021-03-01,Hawaiian Airlines,Hawaiian Airlines,3007,2021
+2021,4,Apr,2021-04-01,Hawaiian Airlines,Hawaiian Airlines,5664,2021
+2021,5,May,2021-05-01,Hawaiian Airlines,Hawaiian Airlines,7491,2021
+2021,6,Jun,2021-06-01,Hawaiian Airlines,Hawaiian Airlines,10578,2021
+2021,7,Jul,2021-07-01,Hawaiian Airlines,Hawaiian Airlines,11019,2021
+2021,8,Aug,2021-08-01,Hawaiian Airlines,Hawaiian Airlines,10480,2021
+2021,9,Sep,2021-09-01,Hawaiian Airlines,Hawaiian Airlines,8125,2021
+2021,10,Oct,2021-10-01,Hawaiian Airlines,Hawaiian Airlines,8687,2021
+2021,11,Nov,2021-11-01,Hawaiian Airlines,Hawaiian Airlines,8598,2021
+2021,12,Dec,2021-12-01,Hawaiian Airlines,Hawaiian Airlines,9322,2021
+2021,1,Jan,2021-01-01,Avianca,Avianca,,2021
+2021,2,Feb,2021-02-01,Avianca,Avianca,,2021
+2021,3,Mar,2021-03-01,Avianca,Avianca,,2021
+2021,4,Apr,2021-04-01,Avianca,Avianca,,2021
+2021,5,May,2021-05-01,Avianca,Avianca,,2021
+2021,6,Jun,2021-06-01,Avianca,Avianca,,2021
+2021,7,Jul,2021-07-01,Avianca,Avianca,2755,2021
+2021,8,Aug,2021-08-01,Avianca,Avianca,2423,2021
+2021,9,Sep,2021-09-01,Avianca,Avianca,2143,2021
+2021,10,Oct,2021-10-01,Avianca,Avianca,2493,2021
+2021,11,Nov,2021-11-01,Avianca,Avianca,2715,2021
+2021,12,Dec,2021-12-01,Avianca,Avianca,4368,2021
+2021,1,Jan,2021-01-01,aha!,aha!,,2021
+2021,2,Feb,2021-02-01,aha!,aha!,,2021
+2021,3,Mar,2021-03-01,aha!,aha!,,2021
+2021,4,Apr,2021-04-01,aha!,aha!,,2021
+2021,5,May,2021-05-01,aha!,aha!,,2021
+2021,6,Jun,2021-06-01,aha!,aha!,,2021
+2021,7,Jul,2021-07-01,aha!,aha!,,2021
+2021,8,Aug,2021-08-01,aha!,aha!,,2021
+2021,9,Sep,2021-09-01,aha!,aha!,,2021
+2021,10,Oct,2021-10-01,aha!,aha!,,2021
+2021,11,Nov,2021-11-01,aha!,aha!,317,2021
+2021,12,Dec,2021-12-01,aha!,aha!,559,2021
+2022,1,Jan,2022-01-01,aha!,aha!,244,2022
+2022,2,Feb,2022-02-01,aha!,aha!,392,2022
+2022,3,Mar,2022-03-01,aha!,aha!,737,2022
+2022,4,Apr,2022-04-01,aha!,aha!,240,2022
+2022,5,May,2022-05-01,aha!,aha!,576,2022
+2022,6,Jun,2022-06-01,aha!,aha!,880,2022
+2022,7,Jul,2022-07-01,aha!,aha!,986,2022
+2022,8,Aug,2022-08-01,aha!,aha!,715,2022
+2022,9,Sep,2022-09-01,aha!,aha!,,2022
+2022,10,Oct,2022-10-01,aha!,aha!,,2022
+2022,11,Nov,2022-11-01,aha!,aha!,,2022
+2022,12,Dec,2022-12-01,aha!,aha!,,2022
+2022,1,Jan,2022-01-01,Alaska Airlines,Alaska Airlines,28675,2022
+2022,2,Feb,2022-02-01,Alaska Airlines,Alaska Airlines,35285,2022
+2022,3,Mar,2022-03-01,Alaska Airlines,Alaska Airlines,42952,2022
+2022,4,Apr,2022-04-01,Alaska Airlines,Alaska Airlines,38727,2022
+2022,5,May,2022-05-01,Alaska Airlines,Alaska Airlines,37255,2022
+2022,6,Jun,2022-06-01,Alaska Airlines,Alaska Airlines,38237,2022
+2022,7,Jul,2022-07-01,Alaska Airlines,Alaska Airlines,32258,2022
+2022,8,Aug,2022-08-01,Alaska Airlines,Alaska Airlines,34267,2022
+2022,9,Sep,2022-09-01,Alaska Airlines,Alaska Airlines,37589,2022
+2022,10,Oct,2022-10-01,Alaska Airlines,Alaska Airlines,44636,2022
+2022,11,Nov,2022-11-01,Alaska Airlines,Alaska Airlines,39342,2022
+2022,12,Dec,2022-12-01,Alaska Airlines,Alaska Airlines,31345,2022
+2022,1,Jan,2022-01-01,American Airlines,American Airlines,57521,2022
+2022,2,Feb,2022-02-01,American Airlines,American Airlines,51881,2022
+2022,3,Mar,2022-03-01,American Airlines,American Airlines,65896,2022
+2022,4,Apr,2022-04-01,American Airlines,American Airlines,65060,2022
+2022,5,May,2022-05-01,American Airlines,American Airlines,72424,2022
+2022,6,Jun,2022-06-01,American Airlines,American Airlines,76794,2022
+2022,7,Jul,2022-07-01,American Airlines,American Airlines,77646,2022
+2022,8,Aug,2022-08-01,American Airlines,American Airlines,78559,2022
+2022,9,Sep,2022-09-01,American Airlines,American Airlines,75262,2022
+2022,10,Oct,2022-10-01,American Airlines,American Airlines,71417,2022
+2022,11,Nov,2022-11-01,American Airlines,American Airlines,73715,2022
+2022,12,Dec,2022-12-01,American Airlines,American Airlines,82177,2022
+2022,1,Jan,2022-01-01,Avianca,Avianca,4769,2022
+2022,2,Feb,2022-02-01,Avianca,Avianca,3155,2022
+2022,3,Mar,2022-03-01,Avianca,Avianca,3894,2022
+2022,4,Apr,2022-04-01,Avianca,Avianca,2934,2022
+2022,5,May,2022-05-01,Avianca,Avianca,3533,2022
+2022,6,Jun,2022-06-01,Avianca,Avianca,3377,2022
+2022,7,Jul,2022-07-01,Avianca,Avianca,3444,2022
+2022,8,Aug,2022-08-01,Avianca,Avianca,3027,2022
+2022,9,Sep,2022-09-01,Avianca,Avianca,4065,2022
+2022,10,Oct,2022-10-01,Avianca,Avianca,3559,2022
+2022,11,Nov,2022-11-01,Avianca,Avianca,3442,2022
+2022,12,Dec,2022-12-01,Avianca,Avianca,3135,2022
+2022,1,Jan,2022-01-01,China Airlines,China Airlines,405,2022
+2022,2,Feb,2022-02-01,China Airlines,China Airlines,516,2022
+2022,3,Mar,2022-03-01,China Airlines,China Airlines,884,2022
+2022,4,Apr,2022-04-01,China Airlines,China Airlines,788,2022
+2022,5,May,2022-05-01,China Airlines,China Airlines,1359,2022
+2022,6,Jun,2022-06-01,China Airlines,China Airlines,1460,2022
+2022,7,Jul,2022-07-01,China Airlines,China Airlines,1603,2022
+2022,8,Aug,2022-08-01,China Airlines,China Airlines,3160,2022
+2022,9,Sep,2022-09-01,China Airlines,China Airlines,2456,2022
+2022,10,Oct,2022-10-01,China Airlines,China Airlines,3814,2022
+2022,11,Nov,2022-11-01,China Airlines,China Airlines,6458,2022
+2022,12,Dec,2022-12-01,China Airlines,China Airlines,8777,2022
+2022,1,Jan,2022-01-01,Delta Air Lines,Delta Air Lines,44096,2022
+2022,2,Feb,2022-02-01,Delta Air Lines,Delta Air Lines,44871,2022
+2022,3,Mar,2022-03-01,Delta Air Lines,Delta Air Lines,63253,2022
+2022,4,Apr,2022-04-01,Delta Air Lines,Delta Air Lines,63622,2022
+2022,5,May,2022-05-01,Delta Air Lines,Delta Air Lines,68214,2022
+2022,6,Jun,2022-06-01,Delta Air Lines,Delta Air Lines,62121,2022
+2022,7,Jul,2022-07-01,Delta Air Lines,Delta Air Lines,62784,2022
+2022,8,Aug,2022-08-01,Delta Air Lines,Delta Air Lines,65950,2022
+2022,9,Sep,2022-09-01,Delta Air Lines,Delta Air Lines,61447,2022
+2022,10,Oct,2022-10-01,Delta Air Lines,Delta Air Lines,62609,2022
+2022,11,Nov,2022-11-01,Delta Air Lines,Delta Air Lines,61600,2022
+2022,12,Dec,2022-12-01,Delta Air Lines,Delta Air Lines,63309,2022
+2022,1,Jan,2022-01-01,Frontier Airlines,Frontier Airlines,26776,2022
+2022,2,Feb,2022-02-01,Frontier Airlines,Frontier Airlines,24632,2022
+2022,3,Mar,2022-03-01,Frontier Airlines,Frontier Airlines,35025,2022
+2022,4,Apr,2022-04-01,Frontier Airlines,Frontier Airlines,42967,2022
+2022,5,May,2022-05-01,Frontier Airlines,Frontier Airlines,59226,2022
+2022,6,Jun,2022-06-01,Frontier Airlines,Frontier Airlines,52328,2022
+2022,7,Jul,2022-07-01,Frontier Airlines,Frontier Airlines,51401,2022
+2022,8,Aug,2022-08-01,Frontier Airlines,Frontier Airlines,56308,2022
+2022,9,Sep,2022-09-01,Frontier Airlines,Frontier Airlines,63472,2022
+2022,10,Oct,2022-10-01,Frontier Airlines,Frontier Airlines,76220,2022
+2022,11,Nov,2022-11-01,Frontier Airlines,Frontier Airlines,62100,2022
+2022,12,Dec,2022-12-01,Frontier Airlines,Frontier Airlines,60555,2022
+2022,1,Jan,2022-01-01,Hawaiian Airlines,Hawaiian Airlines,7287,2022
+2022,2,Feb,2022-02-01,Hawaiian Airlines,Hawaiian Airlines,7392,2022
+2022,3,Mar,2022-03-01,Hawaiian Airlines,Hawaiian Airlines,9656,2022
+2022,4,Apr,2022-04-01,Hawaiian Airlines,Hawaiian Airlines,10388,2022
+2022,5,May,2022-05-01,Hawaiian Airlines,Hawaiian Airlines,10376,2022
+2022,6,Jun,2022-06-01,Hawaiian Airlines,Hawaiian Airlines,10961,2022
+2022,7,Jul,2022-07-01,Hawaiian Airlines,Hawaiian Airlines,11095,2022
+2022,8,Aug,2022-08-01,Hawaiian Airlines,Hawaiian Airlines,10355,2022
+2022,9,Sep,2022-09-01,Hawaiian Airlines,Hawaiian Airlines,9938,2022
+2022,10,Oct,2022-10-01,Hawaiian Airlines,Hawaiian Airlines,10428,2022
+2022,11,Nov,2022-11-01,Hawaiian Airlines,Hawaiian Airlines,9658,2022
+2022,12,Dec,2022-12-01,Hawaiian Airlines,Hawaiian Airlines,10056,2022
+2022,1,Jan,2022-01-01,JetBlue,JetBlue,4542,2022
+2022,2,Feb,2022-02-01,JetBlue,JetBlue,4092,2022
+2022,3,Mar,2022-03-01,JetBlue,JetBlue,8089,2022
+2022,4,Apr,2022-04-01,JetBlue,JetBlue,9448,2022
+2022,5,May,2022-05-01,JetBlue,JetBlue,8846,2022
+2022,6,Jun,2022-06-01,JetBlue,JetBlue,10162,2022
+2022,7,Jul,2022-07-01,JetBlue,JetBlue,10337,2022
+2022,8,Aug,2022-08-01,JetBlue,JetBlue,9526,2022
+2022,9,Sep,2022-09-01,JetBlue,JetBlue,10201,2022
+2022,10,Oct,2022-10-01,JetBlue,JetBlue,10823,2022
+2022,11,Nov,2022-11-01,JetBlue,JetBlue,10070,2022
+2022,12,Dec,2022-12-01,JetBlue,JetBlue,10859,2022
+2022,1,Jan,2022-01-01,Southwest Airlines Co,Southwest Airlines,132478,2022
+2022,2,Feb,2022-02-01,Southwest Airlines Co,Southwest Airlines,152141,2022
+2022,3,Mar,2022-03-01,Southwest Airlines Co,Southwest Airlines,180422,2022
+2022,4,Apr,2022-04-01,Southwest Airlines Co,Southwest Airlines,197690,2022
+2022,5,May,2022-05-01,Southwest Airlines Co,Southwest Airlines,203717,2022
+2022,6,Jun,2022-06-01,Southwest Airlines Co,Southwest Airlines,207556,2022
+2022,7,Jul,2022-07-01,Southwest Airlines Co,Southwest Airlines,217446,2022
+2022,8,Aug,2022-08-01,Southwest Airlines Co,Southwest Airlines,205220,2022
+2022,9,Sep,2022-09-01,Southwest Airlines Co,Southwest Airlines,209413,2022
+2022,10,Oct,2022-10-01,Southwest Airlines Co,Southwest Airlines,215499,2022
+2022,11,Nov,2022-11-01,Southwest Airlines Co,Southwest Airlines,205511,2022
+2022,12,Dec,2022-12-01,Southwest Airlines Co,Southwest Airlines,167863,2022
+2022,1,Jan,2022-01-01,United Air Lines Inc,United Airlines,21632,2022
+2022,2,Feb,2022-02-01,United Air Lines Inc,United Airlines,26312,2022
+2022,3,Mar,2022-03-01,United Air Lines Inc,United Airlines,33501,2022
+2022,4,Apr,2022-04-01,United Air Lines Inc,United Airlines,33158,2022
+2022,5,May,2022-05-01,United Air Lines Inc,United Airlines,41608,2022
+2022,6,Jun,2022-06-01,United Air Lines Inc,United Airlines,37652,2022
+2022,7,Jul,2022-07-01,United Air Lines Inc,United Airlines,38472,2022
+2022,8,Aug,2022-08-01,United Air Lines Inc,United Airlines,36321,2022
+2022,9,Sep,2022-09-01,United Air Lines Inc,United Airlines,34654,2022
+2022,10,Oct,2022-10-01,United Air Lines Inc,United Airlines,33230,2022
+2022,11,Nov,2022-11-01,United Air Lines Inc,United Airlines,28992,2022
+2022,12,Dec,2022-12-01,United Air Lines Inc,United Airlines,28293,2022
+2022,1,Jan,2022-01-01,Volaris,Volaris,10464,2022
+2022,2,Feb,2022-02-01,Volaris,Volaris,7211,2022
+2022,3,Mar,2022-03-01,Volaris,Volaris,9714,2022
+2022,4,Apr,2022-04-01,Volaris,Volaris,10719,2022
+2022,5,May,2022-05-01,Volaris,Volaris,11951,2022
+2022,6,Jun,2022-06-01,Volaris,Volaris,12697,2022
+2022,7,Jul,2022-07-01,Volaris,Volaris,12670,2022
+2022,8,Aug,2022-08-01,Volaris,Volaris,7817,2022
+2022,9,Sep,2022-09-01,Volaris,Volaris,7884,2022
+2022,10,Oct,2022-10-01,Volaris,Volaris,8353,2022
+2022,11,Nov,2022-11-01,Volaris,Volaris,10398,2022
+2022,12,Dec,2022-12-01,Volaris,Volaris,10933,2022
+2022,1,Jan,2022-01-01,All Other,All Others,847,2022
+2022,2,Feb,2022-02-01,All Other,All Others,,2022
+2022,3,Mar,2022-03-01,All Other,All Others,,2022
+2022,4,Apr,2022-04-01,All Other,All Others,,2022
+2022,5,May,2022-05-01,All Other,All Others,,2022
+2022,6,Jun,2022-06-01,All Other,All Others,,2022
+2022,7,Jul,2022-07-01,All Other,All Others,205,2022
+2022,8,Aug,2022-08-01,All Other,All Others,50,2022
+2022,9,Sep,2022-09-01,All Other,All Others,564,2022
+2022,10,Oct,2022-10-01,All Other,All Others,1142,2022
+2022,11,Nov,2022-11-01,All Other,All Others,759,2022
+2022,12,Dec,2022-12-01,All Other,All Others,,2022
+2023,1,Jan,2023-01-01,aha!,aha!,,2023
+2023,2,Feb,2023-02-01,aha!,aha!,,2023
+2023,3,Mar,2023-03-01,aha!,aha!,,2023
+2023,4,Apr,2023-04-01,aha!,aha!,,2023
+2023,5,May,2023-05-01,aha!,aha!,,2023
+2023,6,Jun,2023-06-01,aha!,aha!,,2023
+2023,7,Jul,2023-07-01,aha!,aha!,,2023
+2023,8,Aug,2023-08-01,aha!,aha!,,2023
+2023,9,Sep,2023-09-01,aha!,aha!,,2023
+2023,10,Oct,2023-10-01,aha!,aha!,,2023
+2023,11,Nov,2023-11-01,aha!,aha!,,2023
+2023,12,Dec,2023-12-01,aha!,aha!,,2023
+2023,1,Jan,2023-01-01,Alaska Airlines,Alaska Airlines,29436,2023
+2023,2,Feb,2023-02-01,Alaska Airlines,Alaska Airlines,26407,2023
+2023,3,Mar,2023-03-01,Alaska Airlines,Alaska Airlines,34795,2023
+2023,4,Apr,2023-04-01,Alaska Airlines,Alaska Airlines,41571,2023
+2023,5,May,2023-05-01,Alaska Airlines,Alaska Airlines,44626,2023
+2023,6,Jun,2023-06-01,Alaska Airlines,Alaska Airlines,47117,2023
+2023,7,Jul,2023-07-01,Alaska Airlines,Alaska Airlines,49891,2023
+2023,8,Aug,2023-08-01,Alaska Airlines,Alaska Airlines,48293,2023
+2023,9,Sep,2023-09-01,Alaska Airlines,Alaska Airlines,43395,2023
+2023,10,Oct,2023-10-01,Alaska Airlines,Alaska Airlines,44478,2023
+2023,11,Nov,2023-11-01,Alaska Airlines,Alaska Airlines,42507,2023
+2023,12,Dec,2023-12-01,Alaska Airlines,Alaska Airlines,39278,2023
+2023,1,Jan,2023-01-01,American Airlines,American Airlines,65405,2023
+2023,2,Feb,2023-02-01,American Airlines,American Airlines,69980,2023
+2023,3,Mar,2023-03-01,American Airlines,American Airlines,81529,2023
+2023,4,Apr,2023-04-01,American Airlines,American Airlines,84023,2023
+2023,5,May,2023-05-01,American Airlines,American Airlines,82751,2023
+2023,6,Jun,2023-06-01,American Airlines,American Airlines,92504,2023
+2023,7,Jul,2023-07-01,American Airlines,American Airlines,97480,2023
+2023,8,Aug,2023-08-01,American Airlines,American Airlines,96163,2023
+2023,9,Sep,2023-09-01,American Airlines,American Airlines,88073,2023
+2023,10,Oct,2023-10-01,American Airlines,American Airlines,86845,2023
+2023,11,Nov,2023-11-01,American Airlines,American Airlines,87007,2023
+2023,12,Dec,2023-12-01,American Airlines,American Airlines,82006,2023
+2023,1,Jan,2023-01-01,Avianca,Avianca,2513,2023
+2023,2,Feb,2023-02-01,Avianca,Avianca,3683,2023
+2023,3,Mar,2023-03-01,Avianca,Avianca,4303,2023
+2023,4,Apr,2023-04-01,Avianca,Avianca,3898,2023
+2023,5,May,2023-05-01,Avianca,Avianca,3480,2023
+2023,6,Jun,2023-06-01,Avianca,Avianca,6336,2023
+2023,7,Jul,2023-07-01,Avianca,Avianca,7401,2023
+2023,8,Aug,2023-08-01,Avianca,Avianca,6580,2023
+2023,9,Sep,2023-09-01,Avianca,Avianca,5132,2023
+2023,10,Oct,2023-10-01,Avianca,Avianca,4965,2023
+2023,11,Nov,2023-11-01,Avianca,Avianca,5985,2023
+2023,12,Dec,2023-12-01,Avianca,Avianca,6148,2023
+2023,1,Jan,2023-01-01,China Airlines,China Airlines,9747,2023
+2023,2,Feb,2023-02-01,China Airlines,China Airlines,8149,2023
+2023,3,Mar,2023-03-01,China Airlines,China Airlines,10061,2023
+2023,4,Apr,2023-04-01,China Airlines,China Airlines,18210,2023
+2023,5,May,2023-05-01,China Airlines,China Airlines,17956,2023
+2023,6,Jun,2023-06-01,China Airlines,China Airlines,18209,2023
+2023,7,Jul,2023-07-01,China Airlines,China Airlines,17841,2023
+2023,8,Aug,2023-08-01,China Airlines,China Airlines,17533,2023
+2023,9,Sep,2023-09-01,China Airlines,China Airlines,16369,2023
+2023,10,Oct,2023-10-01,China Airlines,China Airlines,16853,2023
+2023,11,Nov,2023-11-01,China Airlines,China Airlines,16950,2023
+2023,12,Dec,2023-12-01,China Airlines,China Airlines,16535,2023
+2023,1,Jan,2023-01-01,Delta Air Lines,Delta Air Lines,55666,2023
+2023,2,Feb,2023-02-01,Delta Air Lines,Delta Air Lines,48517,2023
+2023,3,Mar,2023-03-01,Delta Air Lines,Delta Air Lines,63043,2023
+2023,4,Apr,2023-04-01,Delta Air Lines,Delta Air Lines,65797,2023
+2023,5,May,2023-05-01,Delta Air Lines,Delta Air Lines,72282,2023
+2023,6,Jun,2023-06-01,Delta Air Lines,Delta Air Lines,66840,2023
+2023,7,Jul,2023-07-01,Delta Air Lines,Delta Air Lines,65485,2023
+2023,8,Aug,2023-08-01,Delta Air Lines,Delta Air Lines,68342,2023
+2023,9,Sep,2023-09-01,Delta Air Lines,Delta Air Lines,59472,2023
+2023,10,Oct,2023-10-01,Delta Air Lines,Delta Air Lines,60097,2023
+2023,11,Nov,2023-11-01,Delta Air Lines,Delta Air Lines,54940,2023
+2023,12,Dec,2023-12-01,Delta Air Lines,Delta Air Lines,59194,2023
+2023,1,Jan,2023-01-01,Frontier Airlines,Frontier Airlines,35824,2023
+2023,2,Feb,2023-02-01,Frontier Airlines,Frontier Airlines,38651,2023
+2023,3,Mar,2023-03-01,Frontier Airlines,Frontier Airlines,50215,2023
+2023,4,Apr,2023-04-01,Frontier Airlines,Frontier Airlines,55809,2023
+2023,5,May,2023-05-01,Frontier Airlines,Frontier Airlines,59386,2023
+2023,6,Jun,2023-06-01,Frontier Airlines,Frontier Airlines,61429,2023
+2023,7,Jul,2023-07-01,Frontier Airlines,Frontier Airlines,69621,2023
+2023,8,Aug,2023-08-01,Frontier Airlines,Frontier Airlines,59289,2023
+2023,9,Sep,2023-09-01,Frontier Airlines,Frontier Airlines,72862,2023
+2023,10,Oct,2023-10-01,Frontier Airlines,Frontier Airlines,88500,2023
+2023,11,Nov,2023-11-01,Frontier Airlines,Frontier Airlines,73046,2023
+2023,12,Dec,2023-12-01,Frontier Airlines,Frontier Airlines,61735,2023
+2023,1,Jan,2023-01-01,Hawaiian Airlines,Hawaiian Airlines,9972,2023
+2023,2,Feb,2023-02-01,Hawaiian Airlines,Hawaiian Airlines,9056,2023
+2023,3,Mar,2023-03-01,Hawaiian Airlines,Hawaiian Airlines,10402,2023
+2023,4,Apr,2023-04-01,Hawaiian Airlines,Hawaiian Airlines,10493,2023
+2023,5,May,2023-05-01,Hawaiian Airlines,Hawaiian Airlines,10143,2023
+2023,6,Jun,2023-06-01,Hawaiian Airlines,Hawaiian Airlines,10805,2023
+2023,7,Jul,2023-07-01,Hawaiian Airlines,Hawaiian Airlines,11429,2023
+2023,8,Aug,2023-08-01,Hawaiian Airlines,Hawaiian Airlines,10965,2023
+2023,9,Sep,2023-09-01,Hawaiian Airlines,Hawaiian Airlines,10128,2023
+2023,10,Oct,2023-10-01,Hawaiian Airlines,Hawaiian Airlines,10401,2023
+2023,11,Nov,2023-11-01,Hawaiian Airlines,Hawaiian Airlines,10132,2023
+2023,12,Dec,2023-12-01,Hawaiian Airlines,Hawaiian Airlines,10072,2023
+2023,1,Jan,2023-01-01,JetBlue,JetBlue,8363,2023
+2023,2,Feb,2023-02-01,JetBlue,JetBlue,5667,2023
+2023,3,Mar,2023-03-01,JetBlue,JetBlue,8172,2023
+2023,4,Apr,2023-04-01,JetBlue,JetBlue,9139,2023
+2023,5,May,2023-05-01,JetBlue,JetBlue,10959,2023
+2023,6,Jun,2023-06-01,JetBlue,JetBlue,10278,2023
+2023,7,Jul,2023-07-01,JetBlue,JetBlue,10342,2023
+2023,8,Aug,2023-08-01,JetBlue,JetBlue,10238,2023
+2023,9,Sep,2023-09-01,JetBlue,JetBlue,8490,2023
+2023,10,Oct,2023-10-01,JetBlue,JetBlue,10081,2023
+2023,11,Nov,2023-11-01,JetBlue,JetBlue,8960,2023
+2023,12,Dec,2023-12-01,JetBlue,JetBlue,9610,2023
+2023,1,Jan,2023-01-01,Southwest Airlines Co,Southwest Airlines,170442,2023
+2023,2,Feb,2023-02-01,Southwest Airlines Co,Southwest Airlines,166235,2023
+2023,3,Mar,2023-03-01,Southwest Airlines Co,Southwest Airlines,199154,2023
+2023,4,Apr,2023-04-01,Southwest Airlines Co,Southwest Airlines,195404,2023
+2023,5,May,2023-05-01,Southwest Airlines Co,Southwest Airlines,212569,2023
+2023,6,Jun,2023-06-01,Southwest Airlines Co,Southwest Airlines,204578,2023
+2023,7,Jul,2023-07-01,Southwest Airlines Co,Southwest Airlines,201963,2023
+2023,8,Aug,2023-08-01,Southwest Airlines Co,Southwest Airlines,198074,2023
+2023,9,Sep,2023-09-01,Southwest Airlines Co,Southwest Airlines,201085,2023
+2023,10,Oct,2023-10-01,Southwest Airlines Co,Southwest Airlines,228397,2023
+2023,11,Nov,2023-11-01,Southwest Airlines Co,Southwest Airlines,222240,2023
+2023,12,Dec,2023-12-01,Southwest Airlines Co,Southwest Airlines,210871,2023
+2023,1,Jan,2023-01-01,United Air Lines Inc,United Airlines,29721,2023
+2023,2,Feb,2023-02-01,United Air Lines Inc,United Airlines,26342,2023
+2023,3,Mar,2023-03-01,United Air Lines Inc,United Airlines,29121,2023
+2023,4,Apr,2023-04-01,United Air Lines Inc,United Airlines,31637,2023
+2023,5,May,2023-05-01,United Air Lines Inc,United Airlines,29907,2023
+2023,6,Jun,2023-06-01,United Air Lines Inc,United Airlines,27995,2023
+2023,7,Jul,2023-07-01,United Air Lines Inc,United Airlines,32023,2023
+2023,8,Aug,2023-08-01,United Air Lines Inc,United Airlines,34319,2023
+2023,9,Sep,2023-09-01,United Air Lines Inc,United Airlines,34586,2023
+2023,10,Oct,2023-10-01,United Air Lines Inc,United Airlines,38909,2023
+2023,11,Nov,2023-11-01,United Air Lines Inc,United Airlines,34685,2023
+2023,12,Dec,2023-12-01,United Air Lines Inc,United Airlines,31836,2023
+2023,1,Jan,2023-01-01,Volaris,Volaris,11457,2023
+2023,2,Feb,2023-02-01,Volaris,Volaris,9844,2023
+2023,3,Mar,2023-03-01,Volaris,Volaris,10377,2023
+2023,4,Apr,2023-04-01,Volaris,Volaris,12327,2023
+2023,5,May,2023-05-01,Volaris,Volaris,12874,2023
+2023,6,Jun,2023-06-01,Volaris,Volaris,12814,2023
+2023,7,Jul,2023-07-01,Volaris,Volaris,14253,2023
+2023,8,Aug,2023-08-01,Volaris,Volaris,12756,2023
+2023,9,Sep,2023-09-01,Volaris,Volaris,12540,2023
+2023,10,Oct,2023-10-01,Volaris,Volaris,13937,2023
+2023,11,Nov,2023-11-01,Volaris,Volaris,14465,2023
+2023,12,Dec,2023-12-01,Volaris,Volaris,17350,2023
+2023,1,Jan,2023-01-01,All Other,All Others,322,2023
+2023,2,Feb,2023-02-01,All Other,All Others,393,2023
+2023,3,Mar,2023-03-01,All Other,All Others,78,2023
+2023,4,Apr,2023-04-01,All Other,All Others,2425,2023
+2023,5,May,2023-05-01,All Other,All Others,,2023
+2023,6,Jun,2023-06-01,All Other,All Others,542,2023
+2023,7,Jul,2023-07-01,All Other,All Others,142,2023
+2023,8,Aug,2023-08-01,All Other,All Others,,2023
+2023,9,Sep,2023-09-01,All Other,All Others,354,2023
+2023,10,Oct,2023-10-01,All Other,All Others,279,2023
+2023,11,Nov,2023-11-01,All Other,All Others,,2023
+2023,12,Dec,2023-12-01,All Other,All Others,1147,2023
+2023,1,Jan,2023-01-01,Northern Pacific,Northern Pacific,,2023
+2023,2,Feb,2023-02-01,Northern Pacific,Northern Pacific,,2023
+2023,3,Mar,2023-03-01,Northern Pacific,Northern Pacific,,2023
+2023,4,Apr,2023-04-01,Northern Pacific,Northern Pacific,,2023
+2023,5,May,2023-05-01,Northern Pacific,Northern Pacific,,2023
+2023,6,Jun,2023-06-01,Northern Pacific,Northern Pacific,,2023
+2023,7,Jul,2023-07-01,Northern Pacific,Northern Pacific,648,2023
+2023,8,Aug,2023-08-01,Northern Pacific,Northern Pacific,1669,2023
+2023,9,Sep,2023-09-01,Northern Pacific,Northern Pacific,1592,2023
+2023,10,Oct,2023-10-01,Northern Pacific,Northern Pacific,,2023
+2023,11,Nov,2023-11-01,Northern Pacific,Northern Pacific,,2023
+2023,12,Dec,2023-12-01,Northern Pacific,Northern Pacific,,2023
+2023,1,Jan,2023-01-01,Volaris El Salvador,Volaris El Salvador,,2023
+2023,2,Feb,2023-02-01,Volaris El Salvador,Volaris El Salvador,,2023
+2023,3,Mar,2023-03-01,Volaris El Salvador,Volaris El Salvador,,2023
+2023,4,Apr,2023-04-01,Volaris El Salvador,Volaris El Salvador,,2023
+2023,5,May,2023-05-01,Volaris El Salvador,Volaris El Salvador,,2023
+2023,6,Jun,2023-06-01,Volaris El Salvador,Volaris El Salvador,,2023
+2023,7,Jul,2023-07-01,Volaris El Salvador,Volaris El Salvador,4056,2023
+2023,8,Aug,2023-08-01,Volaris El Salvador,Volaris El Salvador,3287,2023
+2023,9,Sep,2023-09-01,Volaris El Salvador,Volaris El Salvador,2135,2023
+2023,10,Oct,2023-10-01,Volaris El Salvador,Volaris El Salvador,2258,2023
+2023,11,Nov,2023-11-01,Volaris El Salvador,Volaris El Salvador,2970,2023
+2023,12,Dec,2023-12-01,Volaris El Salvador,Volaris El Salvador,3126,2023
+2023,1,Jan,2023-01-01,New Pacific,New Pacific Airlines,,2023
+2023,2,Feb,2023-02-01,New Pacific,New Pacific Airlines,,2023
+2023,3,Mar,2023-03-01,New Pacific,New Pacific Airlines,,2023
+2023,4,Apr,2023-04-01,New Pacific,New Pacific Airlines,,2023
+2023,5,May,2023-05-01,New Pacific,New Pacific Airlines,,2023
+2023,6,Jun,2023-06-01,New Pacific,New Pacific Airlines,,2023
+2023,7,Jul,2023-07-01,New Pacific,New Pacific Airlines,,2023
+2023,8,Aug,2023-08-01,New Pacific,New Pacific Airlines,,2023
+2023,9,Sep,2023-09-01,New Pacific,New Pacific Airlines,,2023
+2023,10,Oct,2023-10-01,New Pacific,New Pacific Airlines,497,2023
+2023,11,Nov,2023-11-01,New Pacific,New Pacific Airlines,1990,2023
+2023,12,Dec,2023-12-01,New Pacific,New Pacific Airlines,2253,2023
+2024,1,Jan,2024-01-01,Alaska Airlines,Alaska Airlines,27339,2024
+2024,2,Feb,2024-02-01,Alaska Airlines,Alaska Airlines,32461,2024
+2024,3,Mar,2024-03-01,Alaska Airlines,Alaska Airlines,40523,2024
+2024,4,Apr,2024-04-01,Alaska Airlines,Alaska Airlines,40669,2024
+2024,5,May,2024-05-01,Alaska Airlines,Alaska Airlines,43370,2024
+2024,6,Jun,2024-06-01,Alaska Airlines,Alaska Airlines,46484,2024
+2024,7,Jul,2024-07-01,Alaska Airlines,Alaska Airlines,49761,2024
+2024,8,Aug,2024-08-01,Alaska Airlines,Alaska Airlines,48430,2024
+2024,9,Sep,2024-09-01,Alaska Airlines,Alaska Airlines,46927,2024
+2024,10,Oct,2024-10-01,Alaska Airlines,Alaska Airlines,48485,2024
+2024,11,Nov,2024-11-01,Alaska Airlines,Alaska Airlines,50989,2024
+2024,12,Dec,2024-12-01,Alaska Airlines,Alaska Airlines,45908,2024
+2024,1,Jan,2024-01-01,American Airlines,American Airlines,76982,2024
+2024,2,Feb,2024-02-01,American Airlines,American Airlines,77189,2024
+2024,3,Mar,2024-03-01,American Airlines,American Airlines,90653,2024
+2024,4,Apr,2024-04-01,American Airlines,American Airlines,92386,2024
+2024,5,May,2024-05-01,American Airlines,American Airlines,97535,2024
+2024,6,Jun,2024-06-01,American Airlines,American Airlines,97224,2024
+2024,7,Jul,2024-07-01,American Airlines,American Airlines,98355,2024
+2024,8,Aug,2024-08-01,American Airlines,American Airlines,98117,2024
+2024,9,Sep,2024-09-01,American Airlines,American Airlines,92865,2024
+2024,10,Oct,2024-10-01,American Airlines,American Airlines,99871,2024
+2024,11,Nov,2024-11-01,American Airlines,American Airlines,93272,2024
+2024,12,Dec,2024-12-01,American Airlines,American Airlines,101885,2024
+2024,1,Jan,2024-01-01,Avianca,Avianca,6366,2024
+2024,2,Feb,2024-02-01,Avianca,Avianca,4525,2024
+2024,3,Mar,2024-03-01,Avianca,Avianca,5985,2024
+2024,4,Apr,2024-04-01,Avianca,Avianca,6096,2024
+2024,5,May,2024-05-01,Avianca,Avianca,5381,2024
+2024,6,Jun,2024-06-01,Avianca,Avianca,6147,2024
+2024,7,Jul,2024-07-01,Avianca,Avianca,6446,2024
+2024,8,Aug,2024-08-01,Avianca,Avianca,5622,2024
+2024,9,Sep,2024-09-01,Avianca,Avianca,3684,2024
+2024,10,Oct,2024-10-01,Avianca,Avianca,4040,2024
+2024,11,Nov,2024-11-01,Avianca,Avianca,3772,2024
+2024,12,Dec,2024-12-01,Avianca,Avianca,3910,2024
+2024,1,Jan,2024-01-01,China Airlines,China Airlines,18348,2024
+2024,2,Feb,2024-02-01,China Airlines,China Airlines,16498,2024
+2024,3,Mar,2024-03-01,China Airlines,China Airlines,18815,2024
+2024,4,Apr,2024-04-01,China Airlines,China Airlines,17822,2024
+2024,5,May,2024-05-01,China Airlines,China Airlines,17769,2024
+2024,6,Jun,2024-06-01,China Airlines,China Airlines,18666,2024
+2024,7,Jul,2024-07-01,China Airlines,China Airlines,17260,2024
+2024,8,Aug,2024-08-01,China Airlines,China Airlines,16520,2024
+2024,9,Sep,2024-09-01,China Airlines,China Airlines,14300,2024
+2024,10,Oct,2024-10-01,China Airlines,China Airlines,16188,2024
+2024,11,Nov,2024-11-01,China Airlines,China Airlines,18046,2024
+2024,12,Dec,2024-12-01,China Airlines,China Airlines,18168,2024
+2024,1,Jan,2024-01-01,Delta Air Lines,Delta Air Lines,49851,2024
+2024,2,Feb,2024-02-01,Delta Air Lines,Delta Air Lines,45714,2024
+2024,3,Mar,2024-03-01,Delta Air Lines,Delta Air Lines,54022,2024
+2024,4,Apr,2024-04-01,Delta Air Lines,Delta Air Lines,61092,2024
+2024,5,May,2024-05-01,Delta Air Lines,Delta Air Lines,66759,2024
+2024,6,Jun,2024-06-01,Delta Air Lines,Delta Air Lines,70948,2024
+2024,7,Jul,2024-07-01,Delta Air Lines,Delta Air Lines,64131,2024
+2024,8,Aug,2024-08-01,Delta Air Lines,Delta Air Lines,66888,2024
+2024,9,Sep,2024-09-01,Delta Air Lines,Delta Air Lines,60289,2024
+2024,10,Oct,2024-10-01,Delta Air Lines,Delta Air Lines,65438,2024
+2024,11,Nov,2024-11-01,Delta Air Lines,Delta Air Lines,56527,2024
+2024,12,Dec,2024-12-01,Delta Air Lines,Delta Air Lines,60259,2024
+2024,1,Jan,2024-01-01,Frontier Airlines,Frontier Airlines,41583,2024
+2024,2,Feb,2024-02-01,Frontier Airlines,Frontier Airlines,37986,2024
+2024,3,Mar,2024-03-01,Frontier Airlines,Frontier Airlines,67436,2024
+2024,4,Apr,2024-04-01,Frontier Airlines,Frontier Airlines,84074,2024
+2024,5,May,2024-05-01,Frontier Airlines,Frontier Airlines,98829,2024
+2024,6,Jun,2024-06-01,Frontier Airlines,Frontier Airlines,106438,2024
+2024,7,Jul,2024-07-01,Frontier Airlines,Frontier Airlines,117640,2024
+2024,8,Aug,2024-08-01,Frontier Airlines,Frontier Airlines,106886,2024
+2024,9,Sep,2024-09-01,Frontier Airlines,Frontier Airlines,101114,2024
+2024,10,Oct,2024-10-01,Frontier Airlines,Frontier Airlines,104214,2024
+2024,11,Nov,2024-11-01,Frontier Airlines,Frontier Airlines,93943,2024
+2024,12,Dec,2024-12-01,Frontier Airlines,Frontier Airlines,76295,2024
+2024,1,Jan,2024-01-01,Hawaiian Airlines,Hawaiian Airlines,10572,2024
+2024,2,Feb,2024-02-01,Hawaiian Airlines,Hawaiian Airlines,9521,2024
+2024,3,Mar,2024-03-01,Hawaiian Airlines,Hawaiian Airlines,10984,2024
+2024,4,Apr,2024-04-01,Hawaiian Airlines,Hawaiian Airlines,10615,2024
+2024,5,May,2024-05-01,Hawaiian Airlines,Hawaiian Airlines,10851,2024
+2024,6,Jun,2024-06-01,Hawaiian Airlines,Hawaiian Airlines,10898,2024
+2024,7,Jul,2024-07-01,Hawaiian Airlines,Hawaiian Airlines,11479,2024
+2024,8,Aug,2024-08-01,Hawaiian Airlines,Hawaiian Airlines,11198,2024
+2024,9,Sep,2024-09-01,Hawaiian Airlines,Hawaiian Airlines,10449,2024
+2024,10,Oct,2024-10-01,Hawaiian Airlines,Hawaiian Airlines,11036,2024
+2024,11,Nov,2024-11-01,Hawaiian Airlines,Hawaiian Airlines,10102,2024
+2024,12,Dec,2024-12-01,Hawaiian Airlines,Hawaiian Airlines,11163,2024
+2024,1,Jan,2024-01-01,JetBlue,JetBlue,7614,2024
+2024,2,Feb,2024-02-01,JetBlue,JetBlue,5866,2024
+2024,3,Mar,2024-03-01,JetBlue,JetBlue,7878,2024
+2024,4,Apr,2024-04-01,JetBlue,JetBlue,7694,2024
+2024,5,May,2024-05-01,JetBlue,JetBlue,10246,2024
+2024,6,Jun,2024-06-01,JetBlue,JetBlue,10380,2024
+2024,7,Jul,2024-07-01,JetBlue,JetBlue,11059,2024
+2024,8,Aug,2024-08-01,JetBlue,JetBlue,9900,2024
+2024,9,Sep,2024-09-01,JetBlue,JetBlue,9709,2024
+2024,10,Oct,2024-10-01,JetBlue,JetBlue,9009,2024
+2024,11,Nov,2024-11-01,JetBlue,JetBlue,,2024
+2024,12,Dec,2024-12-01,JetBlue,JetBlue,,2024
+2024,1,Jan,2024-01-01,New Pacific Airlines,New Pacific Airlines,1706,2024
+2024,2,Feb,2024-02-01,New Pacific Airlines,New Pacific Airlines,2922,2024
+2024,3,Mar,2024-03-01,New Pacific Airlines,New Pacific Airlines,2790,2024
+2024,4,Apr,2024-04-01,New Pacific Airlines,New Pacific Airlines,,2024
+2024,5,May,2024-05-01,New Pacific Airlines,New Pacific Airlines,,2024
+2024,6,Jun,2024-06-01,New Pacific Airlines,New Pacific Airlines,,2024
+2024,7,Jul,2024-07-01,New Pacific Airlines,New Pacific Airlines,,2024
+2024,8,Aug,2024-08-01,New Pacific Airlines,New Pacific Airlines,,2024
+2024,9,Sep,2024-09-01,New Pacific Airlines,New Pacific Airlines,,2024
+2024,10,Oct,2024-10-01,New Pacific Airlines,New Pacific Airlines,,2024
+2024,11,Nov,2024-11-01,New Pacific Airlines,New Pacific Airlines,,2024
+2024,12,Dec,2024-12-01,New Pacific Airlines,New Pacific Airlines,,2024
+2024,1,Jan,2024-01-01,Southwest Airlines,Southwest Airlines,180066,2024
+2024,2,Feb,2024-02-01,Southwest Airlines,Southwest Airlines,,2024
+2024,3,Mar,2024-03-01,Southwest Airlines,Southwest Airlines,,2024
+2024,4,Apr,2024-04-01,Southwest Airlines,Southwest Airlines,,2024
+2024,5,May,2024-05-01,Southwest Airlines,Southwest Airlines,,2024
+2024,6,Jun,2024-06-01,Southwest Airlines,Southwest Airlines,,2024
+2024,7,Jul,2024-07-01,Southwest Airlines,Southwest Airlines,,2024
+2024,8,Aug,2024-08-01,Southwest Airlines,Southwest Airlines,,2024
+2024,9,Sep,2024-09-01,Southwest Airlines,Southwest Airlines,,2024
+2024,10,Oct,2024-10-01,Southwest Airlines,Southwest Airlines,,2024
+2024,11,Nov,2024-11-01,Southwest Airlines,Southwest Airlines,,2024
+2024,12,Dec,2024-12-01,Southwest Airlines,Southwest Airlines,,2024
+2024,1,Jan,2024-01-01,United Airlines,United Airlines,27807,2024
+2024,2,Feb,2024-02-01,United Airlines,United Airlines,,2024
+2024,3,Mar,2024-03-01,United Airlines,United Airlines,,2024
+2024,4,Apr,2024-04-01,United Airlines,United Airlines,,2024
+2024,5,May,2024-05-01,United Airlines,United Airlines,,2024
+2024,6,Jun,2024-06-01,United Airlines,United Airlines,,2024
+2024,7,Jul,2024-07-01,United Airlines,United Airlines,,2024
+2024,8,Aug,2024-08-01,United Airlines,United Airlines,,2024
+2024,9,Sep,2024-09-01,United Airlines,United Airlines,,2024
+2024,10,Oct,2024-10-01,United Airlines,United Airlines,,2024
+2024,11,Nov,2024-11-01,United Airlines,United Airlines,,2024
+2024,12,Dec,2024-12-01,United Airlines,United Airlines,,2024
+2024,1,Jan,2024-01-01,Volaris,Volaris,18211,2024
+2024,2,Feb,2024-02-01,Volaris,Volaris,15457,2024
+2024,3,Mar,2024-03-01,Volaris,Volaris,16236,2024
+2024,4,Apr,2024-04-01,Volaris,Volaris,12408,2024
+2024,5,May,2024-05-01,Volaris,Volaris,13535,2024
+2024,6,Jun,2024-06-01,Volaris,Volaris,12561,2024
+2024,7,Jul,2024-07-01,Volaris,Volaris,13512,2024
+2024,8,Aug,2024-08-01,Volaris,Volaris,12970,2024
+2024,9,Sep,2024-09-01,Volaris,Volaris,12518,2024
+2024,10,Oct,2024-10-01,Volaris,Volaris,12852,2024
+2024,11,Nov,2024-11-01,Volaris,Volaris,10535,2024
+2024,12,Dec,2024-12-01,Volaris,Volaris,15616,2024
+2024,1,Jan,2024-01-01,Volaris El Salvador,Volaris El Salvador,2087,2024
+2024,2,Feb,2024-02-01,Volaris El Salvador,Volaris El Salvador,,2024
+2024,3,Mar,2024-03-01,Volaris El Salvador,Volaris El Salvador,24,2024
+2024,4,Apr,2024-04-01,Volaris El Salvador,Volaris El Salvador,,2024
+2024,5,May,2024-05-01,Volaris El Salvador,Volaris El Salvador,,2024
+2024,6,Jun,2024-06-01,Volaris El Salvador,Volaris El Salvador,,2024
+2024,7,Jul,2024-07-01,Volaris El Salvador,Volaris El Salvador,,2024
+2024,8,Aug,2024-08-01,Volaris El Salvador,Volaris El Salvador,,2024
+2024,9,Sep,2024-09-01,Volaris El Salvador,Volaris El Salvador,,2024
+2024,10,Oct,2024-10-01,Volaris El Salvador,Volaris El Salvador,,2024
+2024,11,Nov,2024-11-01,Volaris El Salvador,Volaris El Salvador,,2024
+2024,12,Dec,2024-12-01,Volaris El Salvador,Volaris El Salvador,,2024
+2024,1,Jan,2024-01-01,All Others,All Others,1057,2024
+2024,2,Feb,2024-02-01,All Others,All Others,2,2024
+2024,3,Mar,2024-03-01,All Others,All Others,,2024
+2024,4,Apr,2024-04-01,All Others,All Others,,2024
+2024,5,May,2024-05-01,All Others,All Others,65,2024
+2024,6,Jun,2024-06-01,All Others,All Others,305,2024
+2024,7,Jul,2024-07-01,All Others,All Others,408,2024
+2024,8,Aug,2024-08-01,All Others,All Others,,2024
+2024,9,Sep,2024-09-01,All Others,All Others,197,2024
+2024,10,Oct,2024-10-01,All Others,All Others,49,2024
+2024,11,Nov,2024-11-01,All Others,All Others,198,2024
+2024,12,Dec,2024-12-01,All Others,All Others,231,2024
+2024,1,Jan,2024-01-01,Southwest Airlines Co,Southwest Airlines,,2024
+2024,2,Feb,2024-02-01,Southwest Airlines Co,Southwest Airlines,175896,2024
+2024,3,Mar,2024-03-01,Southwest Airlines Co,Southwest Airlines,210073,2024
+2024,4,Apr,2024-04-01,Southwest Airlines Co,Southwest Airlines,212245,2024
+2024,5,May,2024-05-01,Southwest Airlines Co,Southwest Airlines,221080,2024
+2024,6,Jun,2024-06-01,Southwest Airlines Co,Southwest Airlines,229730,2024
+2024,7,Jul,2024-07-01,Southwest Airlines Co,Southwest Airlines,224680,2024
+2024,8,Aug,2024-08-01,Southwest Airlines Co,Southwest Airlines,218390,2024
+2024,9,Sep,2024-09-01,Southwest Airlines Co,Southwest Airlines,209398,2024
+2024,10,Oct,2024-10-01,Southwest Airlines Co,Southwest Airlines,221638,2024
+2024,11,Nov,2024-11-01,Southwest Airlines Co,Southwest Airlines,217982,2024
+2024,12,Dec,2024-12-01,Southwest Airlines Co,Southwest Airlines,222759,2024
+2024,1,Jan,2024-01-01,United Air Lines Inc,United Airlines,,2024
+2024,2,Feb,2024-02-01,United Air Lines Inc,United Airlines,25856,2024
+2024,3,Mar,2024-03-01,United Air Lines Inc,United Airlines,31581,2024
+2024,4,Apr,2024-04-01,United Air Lines Inc,United Airlines,28366,2024
+2024,5,May,2024-05-01,United Air Lines Inc,United Airlines,33241,2024
+2024,6,Jun,2024-06-01,United Air Lines Inc,United Airlines,42948,2024
+2024,7,Jul,2024-07-01,United Air Lines Inc,United Airlines,51591,2024
+2024,8,Aug,2024-08-01,United Air Lines Inc,United Airlines,48551,2024
+2024,9,Sep,2024-09-01,United Air Lines Inc,United Airlines,44565,2024
+2024,10,Oct,2024-10-01,United Air Lines Inc,United Airlines,49058,2024
+2024,11,Nov,2024-11-01,United Air Lines Inc,United Airlines,44486,2024
+2024,12,Dec,2024-12-01,United Air Lines Inc,United Airlines,46052,2024
+2024,1,Jan,2024-01-01,Avelo Airlines,Avelo Airlines,,2024
+2024,2,Feb,2024-02-01,Avelo Airlines,Avelo Airlines,,2024
+2024,3,Mar,2024-03-01,Avelo Airlines,Avelo Airlines,,2024
+2024,4,Apr,2024-04-01,Avelo Airlines,Avelo Airlines,,2024
+2024,5,May,2024-05-01,Avelo Airlines,Avelo Airlines,,2024
+2024,6,Jun,2024-06-01,Avelo Airlines,Avelo Airlines,,2024
+2024,7,Jul,2024-07-01,Avelo Airlines,Avelo Airlines,,2024
+2024,8,Aug,2024-08-01,Avelo Airlines,Avelo Airlines,,2024
+2024,9,Sep,2024-09-01,Avelo Airlines,Avelo Airlines,,2024
+2024,10,Oct,2024-10-01,Avelo Airlines,Avelo Airlines,975,2024
+2024,11,Nov,2024-11-01,Avelo Airlines,Avelo Airlines,1057,2024
+2024,12,Dec,2024-12-01,Avelo Airlines,Avelo Airlines,1640,2024
+2025,1,Jan,2025-01-01,Alaska Airlines,Alaska Airlines,41461,2025
+2025,2,Feb,2025-02-01,Alaska Airlines,Alaska Airlines,33779,2025
+2025,3,Mar,2025-03-01,Alaska Airlines,Alaska Airlines,39907,2025
+2025,4,Apr,2025-04-01,Alaska Airlines,Alaska Airlines,40165,2025
+2025,5,May,2025-05-01,Alaska Airlines,Alaska Airlines,46850,2025
+2025,6,Jun,2025-06-01,Alaska Airlines,Alaska Airlines,55483,2025
+2025,7,Jul,2025-07-01,Alaska Airlines,Alaska Airlines,68060,2025
+2025,8,Aug,2025-08-01,Alaska Airlines,Alaska Airlines,64337,2025
+2025,9,Sep,2025-09-01,Alaska Airlines,Alaska Airlines,54659,2025
+2025,10,Oct,2025-10-01,Alaska Airlines,Alaska Airlines,51520,2025
+2025,11,Nov,2025-11-01,Alaska Airlines,Alaska Airlines,58399,2025
+2025,12,Dec,2025-12-01,Alaska Airlines,Alaska Airlines,57136,2025
+2025,1,Jan,2025-01-01,American Airlines,American Airlines,73062,2025
+2025,2,Feb,2025-02-01,American Airlines,American Airlines,72619,2025
+2025,3,Mar,2025-03-01,American Airlines,American Airlines,94453,2025
+2025,4,Apr,2025-04-01,American Airlines,American Airlines,91369,2025
+2025,5,May,2025-05-01,American Airlines,American Airlines,97825,2025
+2025,6,Jun,2025-06-01,American Airlines,American Airlines,102329,2025
+2025,7,Jul,2025-07-01,American Airlines,American Airlines,104591,2025
+2025,8,Aug,2025-08-01,American Airlines,American Airlines,96720,2025
+2025,9,Sep,2025-09-01,American Airlines,American Airlines,86781,2025
+2025,10,Oct,2025-10-01,American Airlines,American Airlines,99178,2025
+2025,11,Nov,2025-11-01,American Airlines,American Airlines,87682,2025
+2025,12,Dec,2025-12-01,American Airlines,American Airlines,100879,2025
+2025,1,Jan,2025-01-01,Avelo Airlines,Avelo Airlines,436,2025
+2025,2,Feb,2025-02-01,Avelo Airlines,Avelo Airlines,702,2025
+2025,3,Mar,2025-03-01,Avelo Airlines,Avelo Airlines,1236,2025
+2025,4,Apr,2025-04-01,Avelo Airlines,Avelo Airlines,,2025
+2025,5,May,2025-05-01,Avelo Airlines,Avelo Airlines,,2025
+2025,6,Jun,2025-06-01,Avelo Airlines,Avelo Airlines,,2025
+2025,7,Jul,2025-07-01,Avelo Airlines,Avelo Airlines,,2025
+2025,8,Aug,2025-08-01,Avelo Airlines,Avelo Airlines,,2025
+2025,9,Sep,2025-09-01,Avelo Airlines,Avelo Airlines,,2025
+2025,10,Oct,2025-10-01,Avelo Airlines,Avelo Airlines,,2025
+2025,11,Nov,2025-11-01,Avelo Airlines,Avelo Airlines,,2025
+2025,12,Dec,2025-12-01,Avelo Airlines,Avelo Airlines,,2025
+2025,1,Jan,2025-01-01,Avianca,Avianca,4080,2025
+2025,2,Feb,2025-02-01,Avianca,Avianca,3595,2025
+2025,3,Mar,2025-03-01,Avianca,Avianca,3656,2025
+2025,4,Apr,2025-04-01,Avianca,Avianca,3475,2025
+2025,5,May,2025-05-01,Avianca,Avianca,3805,2025
+2025,6,Jun,2025-06-01,Avianca,Avianca,5113,2025
+2025,7,Jul,2025-07-01,Avianca,Avianca,5805,2025
+2025,8,Aug,2025-08-01,Avianca,Avianca,5491,2025
+2025,9,Sep,2025-09-01,Avianca,Avianca,3890,2025
+2025,10,Oct,2025-10-01,Avianca,Avianca,4098,2025
+2025,11,Nov,2025-11-01,Avianca,Avianca,4372,2025
+2025,12,Dec,2025-12-01,Avianca,Avianca,4829,2025
+2025,1,Jan,2025-01-01,China Airlines,China Airlines,19643,2025
+2025,2,Feb,2025-02-01,China Airlines,China Airlines,16148,2025
+2025,3,Mar,2025-03-01,China Airlines,China Airlines,17853,2025
+2025,4,Apr,2025-04-01,China Airlines,China Airlines,17535,2025
+2025,5,May,2025-05-01,China Airlines,China Airlines,16967,2025
+2025,6,Jun,2025-06-01,China Airlines,China Airlines,16964,2025
+2025,7,Jul,2025-07-01,China Airlines,China Airlines,16237,2025
+2025,8,Aug,2025-08-01,China Airlines,China Airlines,14241,2025
+2025,9,Sep,2025-09-01,China Airlines,China Airlines,10326,2025
+2025,10,Oct,2025-10-01,China Airlines,China Airlines,14340,2025
+2025,11,Nov,2025-11-01,China Airlines,China Airlines,16652,2025
+2025,12,Dec,2025-12-01,China Airlines,China Airlines,17679,2025
+2025,1,Jan,2025-01-01,Delta Air Lines,Delta Air Lines,44404,2025
+2025,2,Feb,2025-02-01,Delta Air Lines,Delta Air Lines,41053,2025
+2025,3,Mar,2025-03-01,Delta Air Lines,Delta Air Lines,50634,2025
+2025,4,Apr,2025-04-01,Delta Air Lines,Delta Air Lines,58275,2025
+2025,5,May,2025-05-01,Delta Air Lines,Delta Air Lines,63220,2025
+2025,6,Jun,2025-06-01,Delta Air Lines,Delta Air Lines,65801,2025
+2025,7,Jul,2025-07-01,Delta Air Lines,Delta Air Lines,68590,2025
+2025,8,Aug,2025-08-01,Delta Air Lines,Delta Air Lines,64351,2025
+2025,9,Sep,2025-09-01,Delta Air Lines,Delta Air Lines,58703,2025
+2025,10,Oct,2025-10-01,Delta Air Lines,Delta Air Lines,61146,2025
+2025,11,Nov,2025-11-01,Delta Air Lines,Delta Air Lines,54330,2025
+2025,12,Dec,2025-12-01,Delta Air Lines,Delta Air Lines,58768,2025
+2025,1,Jan,2025-01-01,Frontier Airlines,Frontier Airlines,55360,2025
+2025,2,Feb,2025-02-01,Frontier Airlines,Frontier Airlines,48323,2025
+2025,3,Mar,2025-03-01,Frontier Airlines,Frontier Airlines,62629,2025
+2025,4,Apr,2025-04-01,Frontier Airlines,Frontier Airlines,64004,2025
+2025,5,May,2025-05-01,Frontier Airlines,Frontier Airlines,62924,2025
+2025,6,Jun,2025-06-01,Frontier Airlines,Frontier Airlines,69347,2025
+2025,7,Jul,2025-07-01,Frontier Airlines,Frontier Airlines,73182,2025
+2025,8,Aug,2025-08-01,Frontier Airlines,Frontier Airlines,69122,2025
+2025,9,Sep,2025-09-01,Frontier Airlines,Frontier Airlines,57660,2025
+2025,10,Oct,2025-10-01,Frontier Airlines,Frontier Airlines,63177,2025
+2025,11,Nov,2025-11-01,Frontier Airlines,Frontier Airlines,66187,2025
+2025,12,Dec,2025-12-01,Frontier Airlines,Frontier Airlines,49692,2025
+2025,1,Jan,2025-01-01,Hawaiian Airlines,Hawaiian Airlines,10227,2025
+2025,2,Feb,2025-02-01,Hawaiian Airlines,Hawaiian Airlines,9872,2025
+2025,3,Mar,2025-03-01,Hawaiian Airlines,Hawaiian Airlines,10964,2025
+2025,4,Apr,2025-04-01,Hawaiian Airlines,Hawaiian Airlines,10836,2025
+2025,5,May,2025-05-01,Hawaiian Airlines,Hawaiian Airlines,10881,2025
+2025,6,Jun,2025-06-01,Hawaiian Airlines,Hawaiian Airlines,4040,2025
+2025,7,Jul,2025-07-01,Hawaiian Airlines,Hawaiian Airlines,,2025
+2025,8,Aug,2025-08-01,Hawaiian Airlines,Hawaiian Airlines,,2025
+2025,9,Sep,2025-09-01,Hawaiian Airlines,Hawaiian Airlines,,2025
+2025,10,Oct,2025-10-01,Hawaiian Airlines,Hawaiian Airlines,,2025
+2025,11,Nov,2025-11-01,Hawaiian Airlines,Hawaiian Airlines,,2025
+2025,12,Dec,2025-12-01,Hawaiian Airlines,Hawaiian Airlines,,2025
+2025,1,Jan,2025-01-01,JetBlue,JetBlue,,2025
+2025,2,Feb,2025-02-01,JetBlue,JetBlue,,2025
+2025,3,Mar,2025-03-01,JetBlue,JetBlue,,2025
+2025,4,Apr,2025-04-01,JetBlue,JetBlue,321,2025
+2025,5,May,2025-05-01,JetBlue,JetBlue,9615,2025
+2025,6,Jun,2025-06-01,JetBlue,JetBlue,9557,2025
+2025,7,Jul,2025-07-01,JetBlue,JetBlue,9323,2025
+2025,8,Aug,2025-08-01,JetBlue,JetBlue,10079,2025
+2025,9,Sep,2025-09-01,JetBlue,JetBlue,8566,2025
+2025,10,Oct,2025-10-01,JetBlue,JetBlue,7821,2025
+2025,11,Nov,2025-11-01,JetBlue,JetBlue,,2025
+2025,12,Dec,2025-12-01,JetBlue,JetBlue,,2025
+2025,1,Jan,2025-01-01,New Pacific Airlines,New Pacific Airlines,,2025
+2025,2,Feb,2025-02-01,New Pacific Airlines,New Pacific Airlines,,2025
+2025,3,Mar,2025-03-01,New Pacific Airlines,New Pacific Airlines,,2025
+2025,4,Apr,2025-04-01,New Pacific Airlines,New Pacific Airlines,,2025
+2025,5,May,2025-05-01,New Pacific Airlines,New Pacific Airlines,,2025
+2025,6,Jun,2025-06-01,New Pacific Airlines,New Pacific Airlines,,2025
+2025,7,Jul,2025-07-01,New Pacific Airlines,New Pacific Airlines,,2025
+2025,8,Aug,2025-08-01,New Pacific Airlines,New Pacific Airlines,,2025
+2025,9,Sep,2025-09-01,New Pacific Airlines,New Pacific Airlines,,2025
+2025,10,Oct,2025-10-01,New Pacific Airlines,New Pacific Airlines,,2025
+2025,11,Nov,2025-11-01,New Pacific Airlines,New Pacific Airlines,,2025
+2025,12,Dec,2025-12-01,New Pacific Airlines,New Pacific Airlines,,2025
+2025,1,Jan,2025-01-01,Southwest Airlines,Southwest Airlines,166948,2025
+2025,2,Feb,2025-02-01,Southwest Airlines,Southwest Airlines,,2025
+2025,3,Mar,2025-03-01,Southwest Airlines,Southwest Airlines,,2025
+2025,4,Apr,2025-04-01,Southwest Airlines,Southwest Airlines,,2025
+2025,5,May,2025-05-01,Southwest Airlines,Southwest Airlines,,2025
+2025,6,Jun,2025-06-01,Southwest Airlines,Southwest Airlines,,2025
+2025,7,Jul,2025-07-01,Southwest Airlines,Southwest Airlines,,2025
+2025,8,Aug,2025-08-01,Southwest Airlines,Southwest Airlines,,2025
+2025,9,Sep,2025-09-01,Southwest Airlines,Southwest Airlines,,2025
+2025,10,Oct,2025-10-01,Southwest Airlines,Southwest Airlines,,2025
+2025,11,Nov,2025-11-01,Southwest Airlines,Southwest Airlines,,2025
+2025,12,Dec,2025-12-01,Southwest Airlines,Southwest Airlines,,2025
+2025,1,Jan,2025-01-01,United Airlines,United Airlines,42252,2025
+2025,2,Feb,2025-02-01,United Airlines,United Airlines,,2025
+2025,3,Mar,2025-03-01,United Airlines,United Airlines,,2025
+2025,4,Apr,2025-04-01,United Airlines,United Airlines,,2025
+2025,5,May,2025-05-01,United Airlines,United Airlines,,2025
+2025,6,Jun,2025-06-01,United Airlines,United Airlines,,2025
+2025,7,Jul,2025-07-01,United Airlines,United Airlines,,2025
+2025,8,Aug,2025-08-01,United Airlines,United Airlines,,2025
+2025,9,Sep,2025-09-01,United Airlines,United Airlines,,2025
+2025,10,Oct,2025-10-01,United Airlines,United Airlines,,2025
+2025,11,Nov,2025-11-01,United Airlines,United Airlines,,2025
+2025,12,Dec,2025-12-01,United Airlines,United Airlines,,2025
+2025,1,Jan,2025-01-01,Volaris,Volaris,16597,2025
+2025,2,Feb,2025-02-01,Volaris,Volaris,16064,2025
+2025,3,Mar,2025-03-01,Volaris,Volaris,17172,2025
+2025,4,Apr,2025-04-01,Volaris,Volaris,15546,2025
+2025,5,May,2025-05-01,Volaris,Volaris,18029,2025
+2025,6,Jun,2025-06-01,Volaris,Volaris,17684,2025
+2025,7,Jul,2025-07-01,Volaris,Volaris,26982,2025
+2025,8,Aug,2025-08-01,Volaris,Volaris,26649,2025
+2025,9,Sep,2025-09-01,Volaris,Volaris,24282,2025
+2025,10,Oct,2025-10-01,Volaris,Volaris,27867,2025
+2025,11,Nov,2025-11-01,Volaris,Volaris,29188,2025
+2025,12,Dec,2025-12-01,Volaris,Volaris,32097,2025
+2025,1,Jan,2025-01-01,Volaris El Salvador,Volaris El Salvador,,2025
+2025,2,Feb,2025-02-01,Volaris El Salvador,Volaris El Salvador,,2025
+2025,3,Mar,2025-03-01,Volaris El Salvador,Volaris El Salvador,,2025
+2025,4,Apr,2025-04-01,Volaris El Salvador,Volaris El Salvador,,2025
+2025,5,May,2025-05-01,Volaris El Salvador,Volaris El Salvador,,2025
+2025,6,Jun,2025-06-01,Volaris El Salvador,Volaris El Salvador,,2025
+2025,7,Jul,2025-07-01,Volaris El Salvador,Volaris El Salvador,,2025
+2025,8,Aug,2025-08-01,Volaris El Salvador,Volaris El Salvador,,2025
+2025,9,Sep,2025-09-01,Volaris El Salvador,Volaris El Salvador,,2025
+2025,10,Oct,2025-10-01,Volaris El Salvador,Volaris El Salvador,,2025
+2025,11,Nov,2025-11-01,Volaris El Salvador,Volaris El Salvador,,2025
+2025,12,Dec,2025-12-01,Volaris El Salvador,Volaris El Salvador,,2025
+2025,1,Jan,2025-01-01,All Others,All Others,769,2025
+2025,2,Feb,2025-02-01,All Others,All Others,,2025
+2025,3,Mar,2025-03-01,All Others,All Others,262,2025
+2025,4,Apr,2025-04-01,All Others,All Others,2211,2025
+2025,5,May,2025-05-01,All Others,All Others,322,2025
+2025,6,Jun,2025-06-01,All Others,All Others,1899,2025
+2025,7,Jul,2025-07-01,All Others,All Others,412,2025
+2025,8,Aug,2025-08-01,All Others,All Others,527,2025
+2025,9,Sep,2025-09-01,All Others,All Others,210,2025
+2025,10,Oct,2025-10-01,All Others,All Others,,2025
+2025,11,Nov,2025-11-01,All Others,All Others,216,2025
+2025,12,Dec,2025-12-01,All Others,All Others,458,2025
+2025,1,Jan,2025-01-01,Southwest Airlines Co,Southwest Airlines,,2025
+2025,2,Feb,2025-02-01,Southwest Airlines Co,Southwest Airlines,169227,2025
+2025,3,Mar,2025-03-01,Southwest Airlines Co,Southwest Airlines,218703,2025
+2025,4,Apr,2025-04-01,Southwest Airlines Co,Southwest Airlines,222401,2025
+2025,5,May,2025-05-01,Southwest Airlines Co,Southwest Airlines,239031,2025
+2025,6,Jun,2025-06-01,Southwest Airlines Co,Southwest Airlines,235598,2025
+2025,7,Jul,2025-07-01,Southwest Airlines Co,Southwest Airlines,230813,2025
+2025,8,Aug,2025-08-01,Southwest Airlines Co,Southwest Airlines,221475,2025
+2025,9,Sep,2025-09-01,Southwest Airlines Co,Southwest Airlines,224082,2025
+2025,10,Oct,2025-10-01,Southwest Airlines Co,Southwest Airlines,235616,2025
+2025,11,Nov,2025-11-01,Southwest Airlines Co,Southwest Airlines,216170,2025
+2025,12,Dec,2025-12-01,Southwest Airlines Co,Southwest Airlines,223738,2025
+2025,1,Jan,2025-01-01,United Air Lines Inc,United Airlines,,2025
+2025,2,Feb,2025-02-01,United Air Lines Inc,United Airlines,38711,2025
+2025,3,Mar,2025-03-01,United Air Lines Inc,United Airlines,42150,2025
+2025,4,Apr,2025-04-01,United Air Lines Inc,United Airlines,49485,2025
+2025,5,May,2025-05-01,United Air Lines Inc,United Airlines,60668,2025
+2025,6,Jun,2025-06-01,United Air Lines Inc,United Airlines,68229,2025
+2025,7,Jul,2025-07-01,United Air Lines Inc,United Airlines,69987,2025
+2025,8,Aug,2025-08-01,United Air Lines Inc,United Airlines,66259,2025
+2025,9,Sep,2025-09-01,United Air Lines Inc,United Airlines,63990,2025
+2025,10,Oct,2025-10-01,United Air Lines Inc,United Airlines,67773,2025
+2025,11,Nov,2025-11-01,United Air Lines Inc,United Airlines,53303,2025
+2025,12,Dec,2025-12-01,United Air Lines Inc,United Airlines,51315,2025
+2025,1,Jan,2025-01-01,Starlux Airlines,Starlux Airlines,,2025
+2025,2,Feb,2025-02-01,Starlux Airlines,Starlux Airlines,,2025
+2025,3,Mar,2025-03-01,Starlux Airlines,Starlux Airlines,,2025
+2025,4,Apr,2025-04-01,Starlux Airlines,Starlux Airlines,,2025
+2025,5,May,2025-05-01,Starlux Airlines,Starlux Airlines,,2025
+2025,6,Jun,2025-06-01,Starlux Airlines,Starlux Airlines,7743,2025
+2025,7,Jul,2025-07-01,Starlux Airlines,Starlux Airlines,7930,2025
+2025,8,Aug,2025-08-01,Starlux Airlines,Starlux Airlines,7569,2025
+2025,9,Sep,2025-09-01,Starlux Airlines,Starlux Airlines,5937,2025
+2025,10,Oct,2025-10-01,Starlux Airlines,Starlux Airlines,7062,2025
+2025,11,Nov,2025-11-01,Starlux Airlines,Starlux Airlines,7300,2025
+2025,12,Dec,2025-12-01,Starlux Airlines,Starlux Airlines,8404,2025
+2026,1,Jan,2026-01-01,Alaska Airlines,Alaska Airlines,53856,2026
+2026,1,Jan,2026-01-01,American Airlines,American Airlines,77019,2026
+2026,1,Jan,2026-01-01,Avelo Airlines,Avelo Airlines,,2026
+2026,1,Jan,2026-01-01,Avianca,Avianca,5937,2026
+2026,1,Jan,2026-01-01,China Airlines,China Airlines,18611,2026
+2026,1,Jan,2026-01-01,Delta Air Lines,Delta Air Lines,44952,2026
+2026,1,Jan,2026-01-01,Frontier Airlines,Frontier Airlines,36676,2026
+2026,1,Jan,2026-01-01,Hawaiian Airlines,Hawaiian Airlines,,2026
+2026,1,Jan,2026-01-01,Starlux,Starlux Airlines,9398,2026
+2026,1,Jan,2026-01-01,Southwest Airlines,Southwest Airlines,170581,2026
+2026,1,Jan,2026-01-01,United Airlines,United Airlines,43082,2026
+2026,1,Jan,2026-01-01,Volaris,Volaris,32335,2026
+2026,1,Jan,2026-01-01,All Others,All Others,448,2026

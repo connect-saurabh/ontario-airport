@@ -1,0 +1,365 @@
+---
+title: "Social Media Profile VS Passengers"
+author: "Saurabh Parate"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    code-fold: show
+    code-summary: "Show code"
+    df-print: paged
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: false
+---
+
+# Data
+
+```{r}
+packages <- c("readr", "dplyr", "lubridate", "ggplot2", "scales", "tidyr")
+installed <- rownames(installed.packages())
+
+for (p in packages) {
+  if (!(p %in% installed)) install.packages(p)
+}
+
+library(readr)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+library(scales)
+library(tidyr)
+```
+
+```{r}
+profile <- read_csv("Profile Performance.csv", show_col_types = FALSE)
+passengers <- read_csv("pnfs_passengers_long.csv", show_col_types = FALSE)
+
+# 3) Clean passenger data
+passengers_monthly <- passengers %>%
+  mutate(
+    date = as.Date(date),
+    year = year(date),
+    month = month(date)
+  ) %>%
+  filter(year == 2025) %>%
+  group_by(year, month) %>%
+  summarise(
+    total_passengers = sum(passengers, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+print(passengers_monthly)
+```
+
+
+```{r}
+profile_clean <- profile %>%
+  mutate(
+    date = mdy(Date),
+
+    Audience = as.numeric(gsub(",", "", Audience)),
+    `Net Audience Growth` = as.numeric(gsub(",", "", `Net Audience Growth`)),
+    `Audience Gained` = as.numeric(gsub(",", "", `Audience Gained`)),
+    `Published Posts (Total)` = as.numeric(gsub(",", "", `Published Posts (Total)`)),
+    Impressions = as.numeric(gsub(",", "", Impressions)),
+    `Video Views` = as.numeric(gsub(",", "", `Video Views`)),
+    Engagements = as.numeric(gsub(",", "", Engagements)),
+    Reactions = as.numeric(gsub(",", "", Reactions)),
+    Comments = as.numeric(gsub(",", "", Comments)),
+    Shares = as.numeric(gsub(",", "", Shares))
+  ) %>%
+  mutate(
+    year = year(date),
+    month = month(date)
+  ) %>%
+  filter(year == 2025)
+```
+
+# Aggregate profile data to monthly level
+
+```{r}
+profile_monthly <- profile_clean %>%
+  group_by(year, month) %>%
+  summarise(
+    total_impressions = sum(Impressions, na.rm = TRUE),
+    total_engagements = sum(Engagements, na.rm = TRUE),
+    total_posts = sum(`Published Posts (Total)`, na.rm = TRUE),
+    avg_audience = mean(Audience, na.rm = TRUE),
+    net_audience_growth = sum(`Net Audience Growth`, na.rm = TRUE),
+    total_video_views = sum(`Video Views`, na.rm = TRUE),
+    total_reactions = sum(Reactions, na.rm = TRUE),
+    total_comments = sum(Comments, na.rm = TRUE),
+    total_shares = sum(Shares, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+print(profile_monthly)
+```
+
+# Merge with passenger data
+
+```{r}
+data_2025 <- passengers_monthly %>%
+  left_join(profile_monthly, by = c("year", "month")) %>%
+  arrange(year, month) %>%
+  mutate(
+    date = as.Date(sprintf("%d-%02d-01", year, month))
+  )
+
+print(data_2025)
+```
+
+
+#Check missing values
+
+```{r}
+colSums(is.na(data_2025))
+```
+
+```{r}
+data_2025 <- data_2025 %>%
+  mutate(
+    across(
+      c(total_impressions, total_engagements, total_posts, net_audience_growth,
+        total_video_views, total_reactions, total_comments, total_shares),
+      ~replace_na(., 0)
+    )
+  )
+```
+
+# Correlation check
+
+
+```{r}
+cor_vars <- data_2025 %>%
+  select(
+    total_passengers,
+    total_impressions,
+    total_engagements,
+    total_posts,
+    avg_audience,
+    net_audience_growth,
+    total_video_views
+  )
+
+print(cor(cor_vars, use = "complete.obs"))
+```
+
+# Simple comparison models
+
+
+```{r}
+model1 <- lm(total_passengers ~ total_engagements, data = data_2025)
+summary(model1)
+
+model2 <- lm(total_passengers ~ total_impressions, data = data_2025)
+summary(model2)
+
+model3 <- lm(total_passengers ~ total_posts, data = data_2025)
+summary(model3)
+```
+
+# Stronger model
+
+
+```{r}
+data_2025 <- data_2025 %>%
+  mutate(
+    time_index = row_number(),
+    month_factor = factor(month)
+  )
+
+model_final <- lm(
+  total_passengers ~ total_engagements + total_impressions + total_posts + time_index,
+  data = data_2025
+)
+
+summary(model_final)
+```
+
+
+# Predicted values
+
+```{r}
+data_2025 <- data_2025 %>%
+  mutate(
+    predicted_passengers = predict(model_final, newdata = data_2025)
+  )
+
+```
+
+# Graphs
+## Passenger trend
+
+```{r}
+ggplot(data_2025, aes(x = date, y = total_passengers)) +
+  geom_line(linewidth = 1) +
+  geom_point() +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Monthly Passenger Volume (2025)",
+    x = "Month",
+    y = "Passengers"
+  ) +
+  theme_minimal()
+```
+
+## Profile engagements trend
+
+```{r}
+ggplot(data_2025, aes(x = date, y = total_engagements)) +
+  geom_line(linewidth = 1) +
+  geom_point() +
+  labs(
+    title = "Monthly Profile Engagements (2025)",
+    x = "Month",
+    y = "Engagements"
+  ) +
+  theme_minimal()
+```
+
+## Engagements vs Passengers
+
+```{r}
+ggplot(data_2025, aes(x = total_engagements, y = total_passengers)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Profile Engagements vs Passenger Volume",
+    x = "Total Engagements",
+    y = "Passengers"
+  ) +
+  theme_minimal()
+```
+
+## Impressions vs Passengers
+
+```{r}
+ggplot(data_2025, aes(x = total_impressions, y = total_passengers)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Profile Impressions vs Passenger Volume",
+    x = "Total Impressions",
+    y = "Passengers"
+  ) +
+  theme_minimal()
+```
+
+## Actual vs Predicted
+
+
+```{r}
+ggplot(data_2025, aes(x = date)) +
+  geom_line(aes(y = total_passengers, color = "Actual"), linewidth = 1) +
+  geom_line(aes(y = predicted_passengers, color = "Predicted"), linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  scale_color_manual(values = c("Actual" = "black", "Predicted" = "blue")) +
+  labs(
+    title = "Actual vs Predicted Passengers",
+    x = "Month",
+    y = "Passengers",
+    color = ""
+  ) +
+  theme_minimal()
+```
+
+# Simulation scenarios
+
+
+```{r}
+# Create scenarios based on engagement changes
+simulation <- data_2025 %>%
+  mutate(
+    low_engagement = total_engagements * 0.8,
+    high_engagement = total_engagements * 1.2
+  )
+
+# Predict passengers under each scenario
+simulation <- simulation %>%
+  mutate(
+    baseline_pred = predict(model_final, newdata = data_2025),
+
+    low_pred = predict(model_final,
+      newdata = data_2025 %>%
+        mutate(total_engagements = low_engagement)
+    ),
+
+    high_pred = predict(model_final,
+      newdata = data_2025 %>%
+        mutate(total_engagements = high_engagement)
+    )
+  )
+```
+
+# Visualize simulation (KEY GRAPH)
+
+```{r}
+ggplot(simulation, aes(x = date)) +
+  geom_line(aes(y = baseline_pred, color = "Baseline"), linewidth = 1) +
+  geom_line(aes(y = low_pred, color = "Low Engagement"), linewidth = 1) +
+  geom_line(aes(y = high_pred, color = "High Engagement"), linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  scale_color_manual(values = c(
+    "Baseline" = "black",
+    "Low Engagement" = "red",
+    "High Engagement" = "blue"
+  )) +
+  labs(
+    title = "Simulation of Engagement Impact on Passenger Volume",
+    x = "Month",
+    y = "Passengers",
+    color = "Scenario"
+  ) +
+  theme_minimal()
+```
+
+# Convert to ROI
+
+proxy value per passenger
+
+```{r}
+ value_per_passenger <- 20
+```
+
+A simulation framework was developed to estimate the impact of changes in engagement levels on passenger volume. By adjusting engagement inputs and predicting passenger outcomes, the model provides a forward-looking estimate of potential ROI from community engagement strategies.
+
+```{r}
+roi_results <- simulation %>%
+  mutate(
+    baseline_value = baseline_pred * value_per_passenger,
+    high_value = high_pred * value_per_passenger,
+    incremental_value = high_value - baseline_value
+  ) %>%
+  summarise(
+    total_incremental_value = sum(incremental_value, na.rm = TRUE)
+  )
+
+print(roi_results)
+```
+
+A 20% increase in engagement is associated with approximately $5.7 million in incremental passenger value over the year
+
+Under a high-engagement scenario (+20%), the model estimates an incremental value of approximately $5.7 million, based on a conservative proxy of $20 per passenger. This reflects the potential economic impact of increased community engagement efforts.
+
+# Where engagement matters most (seasonally)
+
+```{r}
+ggplot(simulation, aes(x = date)) +
+  geom_line(aes(y = high_pred - baseline_pred), linewidth = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "Incremental Passengers from Increased Engagement",
+    x = "Month",
+    y = "Additional Passengers"
+  ) +
+  theme_minimal()
+```
+
